@@ -58,12 +58,16 @@ public class BankBookTest {
 		
 // 4.
 //		try {
-//			dto.setBookNum(2L);
+//			dto.setBookNum(5L);
 //			dto = dao.getDetail(dto);
-//			System.out.print("\t"+dto.getBookNum()+" \t|\t ");
-//			System.out.print(dto.getBookName()+" \t|\t ");
-//			System.out.print(dto.getBookRate()+" \t|\t ");
-//			System.out.println(dto.getBookSale());	
+//			if(dto != null) {
+//				System.out.print("\t"+dto.getBookNum()+" \t|\t ");
+//				System.out.print(dto.getBookName()+" \t|\t ");
+//				System.out.print(dto.getBookRate()+" \t|\t ");
+//				System.out.println(dto.getBookSale());	
+//			}else {
+//				System.out.println("¾ø´Ù.");				
+//			}
 //		} catch (Exception e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();

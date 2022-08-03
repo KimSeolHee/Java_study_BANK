@@ -3,9 +3,7 @@ package com.iu.start.bankBook;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import com.iu.start.util.DBConnector;
 
@@ -67,8 +65,9 @@ public class BankBookDAO implements BookDAO{
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setLong(1, bookDTO.getBookNum());
 		ResultSet rs = st.executeQuery();
-		BankBookDTO dto = new BankBookDTO();
+		BankBookDTO dto = null;
 		if(rs.next()) {
+			dto = new BankBookDTO();
 			dto.setBookNum(rs.getLong("bookNum"));
 			dto.setBookName(rs.getNString("bookName"));
 			dto.setBookSale(rs.getInt("bookSale"));
