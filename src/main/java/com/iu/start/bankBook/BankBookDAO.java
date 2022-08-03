@@ -50,7 +50,6 @@ public class BankBookDAO implements BookDAO{
 
 	@Override
 	public int setChangeSale(BankBookDTO bookDTO) throws Exception {
-		//Sale 컬럼 수정
 		Connection con = DBConnector.getConnection();
 		String sql = "UPDATE BANKBOOK SET BOOKSALE = ? WHERE BOOKNUM = ?";
 		PreparedStatement st = con.prepareStatement(sql);
@@ -63,7 +62,6 @@ public class BankBookDAO implements BookDAO{
 
 	@Override
 	public BankBookDTO getDetail(BankBookDTO bookDTO) throws Exception {
-		//BookNum의 값으로 조회
 		Connection con = DBConnector.getConnection();
 		String sql ="SELECT * FROM BANKBOOK WHERE BOOKNUM = ?";
 		PreparedStatement st = con.prepareStatement(sql);
