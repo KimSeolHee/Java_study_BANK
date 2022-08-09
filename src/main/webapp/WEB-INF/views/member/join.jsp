@@ -12,6 +12,7 @@
         <form action="join" method="post" >
             <h4>아이디</h4>
             <input type="text" name="id">
+            
             <h4>비밀번호</h4>
             <input type="password" name="pw">
             <h4>이름</h4>
