@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/bankbook/*")
@@ -24,9 +25,12 @@ public class BankBookController {
 	}
 	
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
-	public String detail(Long bookNum, HttpServletRequest re) throws Exception {
+	public ModelAndView detail(Long bookNum, HttpServletRequest re) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		System.out.println("detail 실행");
 		System.out.println("booknum: "+ bookNum);
+		
+		mv.setViewName("bankBook/detail");
 		
 		BankBookDTO dto = new BankBookDTO();
 		dto.setBookNum(bookNum);
@@ -34,7 +38,7 @@ public class BankBookController {
 		dto = dao.getDetail(dto);
 		re.setAttribute("detail", dto);
 		
-		return "bankbook/detail";
+		return mv;
 	}
 
 // 2번째 방법
