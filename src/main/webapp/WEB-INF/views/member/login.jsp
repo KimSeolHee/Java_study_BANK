@@ -23,7 +23,7 @@
                             <input type="submit" value="로그인">
                         </div>
                         <div>
-                            <a href="../study_index.html">뒤로가기</a>
+                            <a href="/">뒤로가기</a>
                         </div>
                     </form>
             </div>    
