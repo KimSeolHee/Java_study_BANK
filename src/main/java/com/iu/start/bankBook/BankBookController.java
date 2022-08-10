@@ -14,12 +14,13 @@ public class BankBookController {
 	BankBookDAO dao = new BankBookDAO();
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String list(HttpServletRequest re) throws Exception {
+	public void list(HttpServletRequest re) throws Exception {
 		System.out.println("list 실행");
 		ArrayList<BankBookDTO> ar = dao.getList();
 		re.setAttribute("list", ar);
 		
-		return "bankbook/list";
+//		return "bankbook/list"; 
+// requestMapping주소와 return view주소와 같으면 return 생략가능!
 	}
 	
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
@@ -55,19 +56,19 @@ public class BankBookController {
 //		return "bankbook/detail";
 //	}
 	
+	// /bankbook/add , /WEB-INF/views/bankbook/add.jsp
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public String add() {
-		System.out.println("들어왔나?");
+		System.out.println("add 실행");
 		
 		return "bankbook/add";
 	}
 	
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public void add(BankBookDTO dto) throws Exception {
-		System.out.println("post 들어왔나??");
+		System.out.println("add 실행 - post");
 
 		int result = dao.setBankBook(dto);
-		System.out.println(result);
 
 		if(result  != 0) {
 			System.out.println("성공");			
