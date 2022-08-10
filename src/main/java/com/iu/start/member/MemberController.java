@@ -1,20 +1,70 @@
 package com.iu.start.member;
 
+import java.util.ArrayList;
+
 import javax.print.attribute.standard.RequestingUserName;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContext;
+
+import com.iu.start.bankBook.BankBookDTO;
 
 //이 클래스는 Controller역할, 
 //Container(생명주기를 관리해주는)에게 이 클래스의 객체를 생성 위임
 @Controller
 @RequestMapping(value = "/member/*")
 public class MemberController {
+	
+	@RequestMapping(value = "search", method = RequestMethod.GET)
+	public void getSearchById() {
+		System.out.println("search 실행");
+	}
+	
+// 2번째 방법	
+//	@RequestMapping(value = "search", method = RequestMethod.GET)
+//	public ModelAndView getSearchById() {
+//		System.out.println("search 실행");
+//		ModelAndView mv = ModelAndView();
+//		mv.setViewName("member/search");
+//		
+//		return mv;
+//	}
+	
+	@RequestMapping(value = "search", method = RequestMethod.POST)
+	public String getSearchById(Model model, String id) throws Exception {
+		System.out.println("search-post 실행");
+		BankMembersDAO dao = new BankMembersDAO();
+		ArrayList<BankMembersDTO> ar = dao.getSearchById(id);
+		if(ar.size() != 0) {
+			model.addAttribute("list", ar);			
+		}else {
+			return "member/null";
+		}
+		
+		return "member/list";
+	}
+
+//2번째 방법
+//	@RequestMapping(value = "search", method = RequestMethod.POST)
+//	public ModelAndView getSearchById(String id) throws Exception {
+//		System.out.println("search-post 실행");
+//		BankMembersDAO dao = new BankMembersDAO();
+//		ModelAndView mv = new ModelAndView();
+//		ArrayList<BankMembersDTO> ar = dao.getSearchById(id);
+//
+//		mv.setViewName("member/list");
+//		mv.addObject("list", ar);
+//	
+//		return mv;
+//	}
+	
 	
 	// annotation
 	// @ : 설명 + 실행
@@ -24,6 +74,13 @@ public class MemberController {
 		System.out.println("로그인 실행");
 		
 		return "member/login"; //view화면에 연결해줌
+	}
+	
+	@RequestMapping(value = "login", method = RequestMethod.POST)
+	public String login(BankBookDTO dto) {
+		System.out.println("로그인 실행-post");
+		//"rediect: 다시접속할 URL주소(절대경로, 상대경로)"
+		return "redirect: ../";
 	}
 	
 	//get
@@ -74,13 +131,13 @@ public class MemberController {
 		
 		int result = dao.setJoin(BankMembersDTO);
 		
-		if(result == 1) {
+		if(result != 0) {
 			System.out.println("성공");
 		}else {
 			System.out.println("실패");
 		}
 	
-		return "member/join";
+		return "redirect: ../";
 	}
 
 }

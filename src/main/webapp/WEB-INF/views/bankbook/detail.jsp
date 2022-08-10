@@ -38,9 +38,8 @@
 	<%} else{%>
 		<h3>Data가 없다.</h3>
 	<%} %>
-	<!-- 상대경로 -->
-	<a href="../member/login">로그인</a>
-	<!-- 절대경로 -->
-	<a href="/member/join">회원가입</a>
+	<div>
+	<a href="list">list보기</a>
+	</div>
 </body>
 </html>

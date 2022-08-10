@@ -69,17 +69,21 @@ public class BankBookController {
 	}
 	
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public void add(BankBookDTO dto) throws Exception {
+	public ModelAndView add(BankBookDTO dto) throws Exception {
 		System.out.println("add 실행 - post");
 
+		ModelAndView mv = new ModelAndView();
 		int result = dao.setBankBook(dto);
-
+		
 		if(result  != 0) {
-			System.out.println("성공");			
+			System.out.println("성공");
+			mv.setViewName("redirect: list");
 		} else {
-			System.out.println("실패");			
+			System.out.println("실패");
+			mv.setViewName("redirect: add");
 		}
 		
+		return mv;
 	}
 
 }
