@@ -15,7 +15,8 @@ public class BankBookDAO implements BookDAO{
 		Connection con = DBConnector.getConnection();
 		String sql = "INSERT INTO BANKBOOK VALUES (?,?,?,1)";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setLong(1, BookDTO.getBookNum());
+		Long millis = System.currentTimeMillis();
+		st.setLong(1, millis);
 		st.setString(2, BookDTO.getBookName());
 		st.setDouble(3, BookDTO.getBookRate());
 		

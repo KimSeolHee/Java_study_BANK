@@ -10,6 +10,13 @@
 </h1>
 
 <a href = "./member/login">Login</a>
+<a href = "./member/join">Join</a>
+<a href = "./bankbook/list">LIST</a>
+<a href = "./bankbook/detail">Detail</a>
+<div>
+<a href = "./bankbook/add">ADD</a>
+</div>
+
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>
