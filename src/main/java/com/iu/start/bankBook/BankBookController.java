@@ -25,18 +25,18 @@ public class BankBookController {
 	}
 	
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
-	public ModelAndView detail(Long bookNum, HttpServletRequest re) throws Exception {
+	public ModelAndView detail(Long bookNum) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("detail 실행");
 		System.out.println("booknum: "+ bookNum);
 		
-		mv.setViewName("bankBook/detail");
 		
 		BankBookDTO dto = new BankBookDTO();
 		dto.setBookNum(bookNum);
 		
 		dto = dao.getDetail(dto);
-		re.setAttribute("detail", dto);
+		mv.addObject("detail", dto);
+		mv.setViewName("bankbook/detail");
 		
 		return mv;
 	}
