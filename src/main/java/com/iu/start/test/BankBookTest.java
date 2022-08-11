@@ -8,19 +8,19 @@ import com.iu.start.bankBook.BankBookDTO;
 
 public class BankBookTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		BankBookDAO dao = new BankBookDAO();
 		BankBookDTO dto = new BankBookDTO();
 // 1.		
 //		Calendar now = Calendar.getInstance();
 //		
 //		dto.setBookNum(now.getTimeInMillis());
-//		dto.setBookName("Çàº¹ÇÑÅëÀå");
+//		dto.setBookName("ï¿½àº¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 //		dto.setBookRate(10.2);
 //		try {
 //			int result = dao.setBankBook(dto);
 //			if(result != 0) {
-//				System.out.println("¼º°ø");
+//				System.out.println("ï¿½ï¿½ï¿½ï¿½");
 //			}
 //		} catch (Exception e) {
 //			// TODO Auto-generated catch block
@@ -48,7 +48,7 @@ public class BankBookTest {
 //			int result = dao.setChangeSale(dto);
 //			
 //			if(result != 0) {
-//				System.out.println("¼º°ø!");
+//				System.out.println("ï¿½ï¿½ï¿½ï¿½!");
 //			}
 //		} catch (Exception e) {
 //			// TODO Auto-generated catch block
@@ -66,12 +66,26 @@ public class BankBookTest {
 //				System.out.print(dto.getBookRate()+" \t|\t ");
 //				System.out.println(dto.getBookSale());	
 //			}else {
-//				System.out.println("¾ø´Ù.");				
+//				System.out.println("ï¿½ï¿½ï¿½ï¿½.");				
 //			}
 //		} catch (Exception e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		
+		
+		dto.setBookNum(2L);
+		dto.setBookName("í•˜í•˜");
+		dto.setBookRate(0.2);
+		int result = dao.setUpdate(dto);
+		
+		System.out.println(result);
+		
+		if(result != 0) {
+			System.out.println("ì„±ê³µ");
+		}else {
+			System.out.println("ì‹¤íŒ¨");
+		}
 	
 	}
 

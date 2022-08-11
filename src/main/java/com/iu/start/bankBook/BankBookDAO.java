@@ -8,6 +8,27 @@ import java.util.ArrayList;
 import com.iu.start.util.DBConnector;
 
 public class BankBookDAO implements BookDAO{
+	
+	@Override
+	public int setUpdate(BankBookDTO bookDTO) throws Exception {
+		
+		//DB연결
+		Connection con = DBConnector.getConnection();
+		//sql문 작성
+		String sql = "update bankbook set bookName=?, bookRate=? where bookNum = ?";
+		//미리준비
+		PreparedStatement st = con.prepareStatement(sql);
+		//?문처리
+		st.setString(1, bookDTO.getBookName());
+		st.setDouble(2, bookDTO.getBookRate());
+		st.setLong(3, bookDTO.getBookNum());
+		//결과 리턴(숫자로 업데이트 항목 확인)
+		int result = 0;
+		result = st.executeUpdate();
+		
+		DBConnector.disConnection(st, con);
+		return result;
+	}
 
 	@Override
 	public int setBankBook(BankBookDTO BookDTO) throws Exception {
@@ -76,6 +97,19 @@ public class BankBookDAO implements BookDAO{
 		}
 		DBConnector.disConnection(rs, st, con);
 		return dto;
+	}
+	
+	public int setDelete(BankBookDTO dto) throws Exception {
+		
+		Connection con = DBConnector.getConnection();
+		String sql = "delete bankbook where bookNum = ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setLong(1, dto.getBookNum());
+		int result = st.executeUpdate();
+		
+		DBConnector.disConnection(st, con);
+	
+		return result;
 	}
 
 }

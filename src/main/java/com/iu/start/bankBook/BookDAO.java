@@ -4,18 +4,20 @@ import java.util.ArrayList;
 
 public interface BookDAO {
 	
-	//BankBook Table¿¡ Insert
-		//BOOKNUMÀº ÇöÀç½Ã°£À» ¹Ð¸®¼¼ÄÁÁî·Î º¯È¯ÇÏ¿© ÀÔ·Â
-		//BOOKSALEÀº ¹«Á¶°Ç 1·Î ÀÔ·Â
+		public int setUpdate(BankBookDTO bookDTO) throws Exception;
+	
+	//BankBook Tableï¿½ï¿½ Insert
+		//BOOKNUMï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï¿ï¿½ ï¿½Ô·ï¿½
+		//BOOKSALEï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ ï¿½Ô·ï¿½
 		public int setBankBook(BankBookDTO BookDTO) throws Exception;
 
-		//BankBook ¸ðµç µ¥ÀÌÅÍ¸¦ Á¶È¸ ÃÖ½Å¼øÀ¸·Î
+		//BankBook ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½È¸ ï¿½Ö½Å¼ï¿½ï¿½ï¿½ï¿½ï¿½
 		public ArrayList<BankBookDTO> getList() throws Exception;
 		
-		//Sale ÄÃ·³ ¼öÁ¤
+		//Sale ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½
 		public int setChangeSale(BankBookDTO bookDTO) throws Exception;
 		
-		//BookNumÀÇ °ªÀ¸·Î Á¶È¸
+		//BookNumï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 		public BankBookDTO getDetail(BankBookDTO bookDTO) throws Exception;
 
 }
