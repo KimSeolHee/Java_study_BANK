@@ -2,11 +2,13 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+ <%--   <%
     		//스크립틀릿 <% 사이에 java code작성% >
     		// 표현식 <%=자바변수 또는 값% >
     		ArrayList<BankBookDTO> ar = (ArrayList<BankBookDTO>)request.getAttribute("list");
-    %>
+    %> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,12 +29,21 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% for(BankBookDTO dto : ar){ %>
+		
+		<c:forEach items="${requestScope.list}" var="dto">
+			<tr>
+				<td><a href="detail?bookNum=${dto.getBookNum()}">${pageScope.dto.bookName}</a></td>
+				<td>${pageScope.dto.bookRate}</td>
+			</tr>
+		</c:forEach>
+			
+		
+		<%--	 <% for(BankBookDTO dto : ar){ %>
 					<tr>
 						<td><a href="./detail?bookNum=<%= dto.getBookNum() %>"><%= dto.getBookName() %></a></td>
 						<td><%= dto.getBookRate() %></td>
 					</tr>
-			<%} %>
+			<%} %> --%>
 		</tbody>
 	</table>
 	<div>

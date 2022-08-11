@@ -1,11 +1,6 @@
-<%@page import="com.iu.start.member.BankMembersDTO"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%
-    ArrayList<BankMembersDTO> ar = (ArrayList<BankMembersDTO>)request.getAttribute("list");
-    System.out.println(ar);
-    %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,15 +17,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%  for(BankMembersDTO dto:ar) {%>
-			<tr>
-			<td><%=dto.getId() %></td>
-			<td><%=dto.getPw() %></td>
-			<td><%=dto.getName() %></td>
-			<td><%=dto.getEmail() %></td>
-			<td><%=dto.getPhone() %></td>
-			</tr>
-			<%} %>
+			<c:forEach items="${requestScope.list}" var="dto">
+				<tr>
+					<td>${pageScope.dto.getId()}</td>
+					<td>${pageScope.dto.pw}</td>	
+					<td>${pageScope.dto.name}</td>	
+					<td>${pageScope.dto.email}</td>
+					<td>${pageScope.dto.phone}</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 	
