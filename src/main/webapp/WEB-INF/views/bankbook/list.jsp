@@ -16,6 +16,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div class="contain">
 	<h1>통장리스트</h1>
 	<!-- /bankbook/list -->
 	
@@ -28,11 +29,10 @@
 				<th>Name</th><th>Rate</th>
 			</tr>
 		</thead>
-		<tbody>
-		
-		<c:forEach items="${requestScope.list}" var="dto">
+		<tbody>	
+		<c:forEach items="${list}" var="dto">
 			<tr>
-				<td><a href="detail?bookNum=${dto.getBookNum()}">${pageScope.dto.bookName}</a></td>
+				<td><a href="detail?bookNum=${dto.getBookNum()}">${dto.bookName}</a></td>
 				<td>${pageScope.dto.bookRate}</td>
 			</tr>
 		</c:forEach>
@@ -51,6 +51,7 @@
 	</div>
 	<div>
 	<a href="/">홈으로</a>
+	</div>
 	</div>
 </body>
 </html>

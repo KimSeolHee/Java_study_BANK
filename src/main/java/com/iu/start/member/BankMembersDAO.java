@@ -8,6 +8,25 @@ import java.util.ArrayList;
 import com.iu.start.util.DBConnector;
 
 public class BankMembersDAO implements MembersDAO {
+	
+	public BankMembersDTO getLogin(BankMembersDTO dto) throws Exception{
+		Connection con = DBConnector.getConnection();
+		String sql="SELECT ID, NAME FROM BANKMEMBERS WHERE ID=? AND PW=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, dto.getId());
+		st.setString(2, dto.getPw());
+		ResultSet rs = st.executeQuery();
+		
+		if(rs.next()) {
+			dto = new BankMembersDTO();
+			dto.setId(rs.getString("id"));
+			dto.setName(rs.getString("name"));
+		}else {
+			dto =null;
+		}
+		
+		return dto;	
+	}
 
 	@Override
 	public int setJoin(BankMembersDTO bankMembersDTO) throws Exception {
@@ -53,4 +72,5 @@ public class BankMembersDAO implements MembersDAO {
 		
 		return ar;
 	}
+	
 }
