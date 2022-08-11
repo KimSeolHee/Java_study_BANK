@@ -22,6 +22,7 @@
                         <div class="login">
                             <input type="submit" value="로그인">
                         </div>
+                        <hr>
                         <div>
                             <a href="/">뒤로가기</a>
                         </div>

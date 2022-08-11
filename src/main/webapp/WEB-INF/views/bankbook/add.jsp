@@ -24,7 +24,7 @@
                             <input type="submit" value="추가하기">
                         </div>
                         <div>
-                            <a href="/">뒤로가기</a>
+                            <a href="list">통장list</a>
                         </div>
                     </form>
             </div>    

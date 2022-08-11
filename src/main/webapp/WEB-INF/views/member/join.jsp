@@ -27,6 +27,10 @@
                 <input type = "submit" value="가입하기">
             </div>
         </form>
+        <hr>
+        <div>
+        	<a href="/">홈으로</a>
+        </div>
     </div>
 </body>
 </html>

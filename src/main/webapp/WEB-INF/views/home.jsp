@@ -1,22 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>My Bank Page</title>
 </head>
 <body>
 <h1>
-	Hello world!  
+	My Bank Page!! 🙆‍♀️🙆‍♀️ 
 </h1>
 
-<a href = "./member/login">Login</a>
-<a href = "./member/join">Join</a>
-<a href = "./bankbook/list">LIST</a>
-<a href = "./bankbook/detail">Detail</a>
 <div>
-<a href = "./bankbook/add">ADD</a>
+<a href = "./member/login"><b>로그인🔑</b></a>
+</div>
+<div>
+<a href = "./member/join"><b>회원가입✏</b></a>
+</div>
+<div>
+<a href = "./bankbook/list"><b>상품리스트📜</b></a>
+</div>
+<div>
+<a href = "./bankbook/add"><b>통장추가➕</b></a>
+</div>
+<div>
+<a href = "./member/search"><b>회원조회🔎</b></a>
 </div>
 
-<P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>

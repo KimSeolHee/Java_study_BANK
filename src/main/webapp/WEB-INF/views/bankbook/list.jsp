@@ -17,7 +17,6 @@
 	<h1>통장리스트</h1>
 	<!-- /bankbook/list -->
 	
-	<a href="./detail">DETAIL</a>
 	<!-- /bankbook/detail  jsp:detail.jsp -->
 	<!-- link 주소는 상대경로로 작성 -->
 	<!-- /bankbook/detail 절대경로, ./detail or detail상대경로-->
@@ -36,6 +35,11 @@
 			<%} %>
 		</tbody>
 	</table>
-	
+	<div>
+		<a href="add">상품등록</a>
+	</div>
+	<div>
+	<a href="/">홈으로</a>
+	</div>
 </body>
 </html>
