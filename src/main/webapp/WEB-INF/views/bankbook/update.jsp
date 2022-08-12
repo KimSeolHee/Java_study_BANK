@@ -10,7 +10,7 @@
 <h2>통장 수정</h2>
 <hr>
 	    <div>
-        <form action="update" method="post">
+        <form action="update.do" method="post">
             <div class="container">
                 <div>
                 	<input type="hidden" name="bookNum" value="${dto.bookNum}" >

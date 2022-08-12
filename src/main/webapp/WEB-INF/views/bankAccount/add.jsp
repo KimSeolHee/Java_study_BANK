@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<h1>delete page</h1>
-
+adddddddd
 </body>
 </html>

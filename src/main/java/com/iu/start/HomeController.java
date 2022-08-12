@@ -32,6 +32,7 @@ public class HomeController {
 		cookie.setMaxAge(600);//60초
 		response.addCookie(cookie);
 		
+		
 		return "home";
 	}
 	

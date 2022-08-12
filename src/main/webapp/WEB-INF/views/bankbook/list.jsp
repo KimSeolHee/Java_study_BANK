@@ -32,7 +32,7 @@
 		<tbody>	
 		<c:forEach items="${list}" var="dto">
 			<tr>
-				<td><a href="detail?bookNum=${dto.getBookNum()}">${dto.bookName}</a></td>
+				<td><a href="detail.do?bookNum=${dto.getBookNum()}">${dto.bookName}</a></td>
 				<td>${pageScope.dto.bookRate}</td>
 			</tr>
 		</c:forEach>
@@ -47,7 +47,7 @@
 		</tbody>
 	</table>
 	<div>
-		<a href="add">상품등록</a>
+		<a href="add.do">상품등록</a>
 	</div>
 	<div>
 	<a href="/">홈으로</a>

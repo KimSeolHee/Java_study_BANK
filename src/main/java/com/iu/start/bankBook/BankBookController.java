@@ -3,6 +3,7 @@ package com.iu.start.bankBook;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +18,7 @@ import com.iu.start.member.BankMembersDTO;
 public class BankBookController {
 	BankBookDAO dao = new BankBookDAO();
 	
-	@RequestMapping(value = "list", method = RequestMethod.GET)
+	@RequestMapping(value = "list.do", method = RequestMethod.GET)
 	public void list(HttpServletRequest re) throws Exception {
 		System.out.println("list 실행");
 		ArrayList<BankBookDTO> ar = dao.getList();
@@ -27,7 +28,7 @@ public class BankBookController {
 // requestMapping주소와 return view주소와 같으면 return 생략가능!
 	}
 	
-	@RequestMapping(value = "detail", method = RequestMethod.GET)
+	@RequestMapping(value = "detail.do", method = RequestMethod.GET)
 	public ModelAndView detail(Long bookNum) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("detail 실행");
@@ -64,14 +65,14 @@ public class BankBookController {
 //	}
 	
 	// /bankbook/add , /WEB-INF/views/bankbook/add.jsp
-	@RequestMapping(value = "add", method = RequestMethod.GET)
+	@RequestMapping(value = "add.do", method = RequestMethod.GET)
 	public String add() {
 		System.out.println("add 실행");
 		
 		return "bankbook/add";
 	}
 	
-	@RequestMapping(value = "add", method = RequestMethod.POST)
+	@RequestMapping(value = "add.do", method = RequestMethod.POST)
 	public ModelAndView add(BankBookDTO dto) throws Exception {
 		System.out.println("add 실행 - post");
 
@@ -80,16 +81,16 @@ public class BankBookController {
 		
 		if(result  != 0) {
 			System.out.println("성공");
-			mv.setViewName("redirect: list");
+			mv.setViewName("redirect: list.do");
 		} else {
 			System.out.println("실패");
-			mv.setViewName("redirect: add");
+			mv.setViewName("redirect: add.do");
 		}
 		
 		return mv;
 	}
 	
-	@RequestMapping(value = "update", method = RequestMethod.GET)
+	@RequestMapping(value = "update.do", method = RequestMethod.GET)
 	public ModelAndView update(BankBookDTO dto, ModelAndView mv) throws Exception {
 		System.out.println("update페이지 들어갔는지 확인༼ つ ◕_◕ ༽つ༼ つ ◕_◕ ༽つ");
 		BankBookDAO dao = new BankBookDAO();
@@ -100,24 +101,24 @@ public class BankBookController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "update", method = RequestMethod.POST)
+	@RequestMapping(value = "update.do", method = RequestMethod.POST)
 	public ModelAndView update(BankBookDTO dto) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = dao.setUpdate(dto);
 		if(result != 0) {
 			System.out.println("성공!💯💯👏");
 		}
-		mv.setViewName("redirect: detail?bookNum="+dto.getBookNum());
+		mv.setViewName("redirect: detail.do?bookNum="+dto.getBookNum());
 		return mv;
 	}
 	
-	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	@RequestMapping(value = "delete.do", method = RequestMethod.GET)
 	public ModelAndView delete(BankBookDTO dto) throws Exception {
 		System.out.println("delete 실행(☞ﾟヮﾟ)☞☜(ﾟヮﾟ☜)");
 		ModelAndView mv = new ModelAndView();
 		int result = dao.setDelete(dto);
 		System.out.println(result);
-		mv.setViewName("redirect: list");
+		mv.setViewName("redirect: list.do");
 		return mv;
 	}
 

@@ -9,7 +9,7 @@
 <body>
 	<h1>Join page</h1>
     <div class="container">
-        <form action="join" method="post" >
+        <form action="join.do" method="post" >
             <h4>아이디</h4>
             <input type="text" name="id">
             

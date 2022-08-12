@@ -9,30 +9,31 @@
 <h1>
 	My Bank Page!! 🙆‍♀️🙆‍♀️ 
 </h1>
-<c:if test="${empty member}">
+<c:if test="${empty sessionScope.member}">
 <div>
-	<a href = "./member/login"><b>로그인🔑</b></a>
+	<a href = "./member/login.do"><b>로그인🔑</b></a>
 </div>
 <div>
-	<a href = "./member/join"><b>회원가입✏</b></a>
+	<a href = "./member/join.do"><b>회원가입✏</b></a>
 </div>
 </c:if>
-<c:if test="${not empty member}">
+<c:if test="${not empty sessionScope.member}">
+<h3>${sessionScope.member.name} 님 환영합니다!</h3>
 <div>
-	<a href="#"><b>로그아웃</b></a>
+	<a href="./member/Logout.do"><b>로그아웃</b></a>
 </div>
 <div>
 	<a href="#"><b>마이페이지</b></a>
 </div>
 </c:if>
 <div>
-	<a href = "./bankbook/list"><b>상품리스트📜</b></a>
+	<a href = "./bankbook/list.do"><b>상품리스트📜</b></a>
 </div>
 <div>
-	<a href = "./bankbook/add"><b>통장추가➕</b></a>
+	<a href = "./bankbook/add.do"><b>통장추가➕</b></a>
 </div>
 <div>
-	<a href = "./member/search"><b>회원조회🔎</b></a>
+	<a href = "./member/search.do"><b>회원조회🔎</b></a>
 </div>
 
 </body>

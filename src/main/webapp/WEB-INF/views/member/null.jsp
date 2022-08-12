@@ -12,7 +12,7 @@
 	</div>
 	<h1>다시 조회해 주세요~😰😱</h1>
 	<div>
-	<a href="/member/search">다시 조회하기👆</a>
+	<a href="/member/search.do">다시 조회하기👆</a>
 	</div>
 	</body>
 </html>
