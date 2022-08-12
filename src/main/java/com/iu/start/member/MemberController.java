@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.print.attribute.standard.RequestingUserName;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +23,14 @@ import com.iu.start.bankBook.BankBookDTO;
 @RequestMapping(value = "/member/*")
 public class MemberController {
 	
-	@RequestMapping(value = "search", method = RequestMethod.GET)
+	@RequestMapping(value = "Logout.do", method = RequestMethod.GET)
+	public String logout(HttpSession session) throws Exception {
+		session.invalidate();
+		System.out.println("로그아웃");
+		return "redirect: ../";
+	}
+	
+	@RequestMapping(value = "search.do", method = RequestMethod.GET)
 	public void getSearchById() {
 		System.out.println("search 실행");
 	}
@@ -37,7 +45,7 @@ public class MemberController {
 //		return mv;
 //	}
 	
-	@RequestMapping(value = "search", method = RequestMethod.POST)
+	@RequestMapping(value = "search.do", method = RequestMethod.POST)
 	public String getSearchById(Model model, String id) throws Exception {
 		System.out.println("search-post 실행");
 		BankMembersDAO dao = new BankMembersDAO();
@@ -69,23 +77,36 @@ public class MemberController {
 	// annotation
 	// @ : 설명 + 실행
 	// /member/login 실행해야 하는 순수한 메서드를 만들어야함
-	@RequestMapping(value = "login")
+	@RequestMapping(value = "login.do")
 	public String login() {
 		System.out.println("로그인 실행");
 		
 		return "member/login"; //view화면에 연결해줌
 	}
 	
-	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public String login(BankBookDTO dto) {
+	@RequestMapping(value = "login.do", method = RequestMethod.POST)
+	public String login(HttpSession session, BankMembersDTO dto) throws Exception {
 		System.out.println("로그인 실행-post");
+		BankMembersDAO dao = new BankMembersDAO();
+		dto = dao.getLogin(dto);
+		if(dto != null) {
+			System.out.println("성공");
+		}else if(dto == null) {
+			System.out.println("실패");
+		}
+		
+		//session은 일정시간동안 살아있음! 로그인 할땐 session을 이용해야함.
+//		HttpSession session = request.getSession(); session을 매개변수로 받으면 생략가능
+		session.setAttribute("member", dto);
+		
+//		model.addAttribute("member", dto); 이전에 했던 방법
 		//"rediect: 다시접속할 URL주소(절대경로, 상대경로)"
 		return "redirect: ../";
 	}
 	
 	//get
 	//join /member/join → 절대경로로 작성해야함
-	@RequestMapping(value = "join", method = RequestMethod.GET)
+	@RequestMapping(value = "join.do", method = RequestMethod.GET)
 	public String join() {
 		System.out.println("회원가입 Get 실행");
 		
@@ -123,7 +144,7 @@ public class MemberController {
 	
 	
 // 3번째 방법	
-	@RequestMapping(value = "join", method = RequestMethod.POST)
+	@RequestMapping(value = "join.do", method = RequestMethod.POST)
 	public String join(BankMembersDTO BankMembersDTO) throws Exception {
 		System.out.println("회원가입 Post 실행");
 		

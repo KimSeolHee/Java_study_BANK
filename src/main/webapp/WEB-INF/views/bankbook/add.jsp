@@ -9,7 +9,7 @@
 <body>
 	<h2>통장 추가</h2>
 	    <div>
-        <form action="./add" method="post">
+        <form action="./add.do" method="post">
             <div class="container">
                 <div>
                 	<h3>통장이름</h3>
@@ -22,9 +22,6 @@
                     <form >
                         <div class="login">
                             <input type="submit" value="추가하기">
-                        </div>
-                        <div>
-                            <a href="list">통장list</a>
                         </div>
                     </form>
             </div>    
