@@ -35,6 +35,9 @@
 <div>
 	<a href = "./member/search.do"><b>회원조회🔎</b></a>
 </div>
+<div>
+	<a href = "./board/list.do"><b>게시판🚶‍♀️‍🏃‍♂️🤸</b></a>
+</div>
 
 </body>
 </html>
