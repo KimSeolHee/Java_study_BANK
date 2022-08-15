@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>
-	My Bank Page!! 🙆‍♀️🙆‍♀️ 
+	My Bank Page 🙆‍♀️🙆‍♀️ 
 </h1>
 <c:if test="${empty sessionScope.member}">
 <div>
