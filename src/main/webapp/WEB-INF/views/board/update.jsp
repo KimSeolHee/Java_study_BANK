@@ -11,6 +11,7 @@
 	
 	<form action="update.do" method="POST">
 		<div>
+		<input type="hidden" name="boardNum" value="${boardDTO.boardNum}">
 		<span><b>제목 : </b></span><input readonly type="text" name="title" value="${boardDTO.title}">
 		</div>
 		<div>

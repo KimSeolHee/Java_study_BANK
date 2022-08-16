@@ -54,7 +54,7 @@ public class BoardDAO {
 	
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		Connection con = DBConnector.getConnection();
-		String spl="UPDATE BOARD SET title = '?', CONTENT='?' WHERE BOARDNUM=?";
+		String spl="UPDATE BOARD SET title = ?, CONTENT=? WHERE BOARDNUM=?";
 		PreparedStatement st = con.prepareStatement(spl);
 		st.setString(1, boardDTO.getTitle());
 		st.setString(2, boardDTO.getContent());
