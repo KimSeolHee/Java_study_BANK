@@ -23,13 +23,8 @@ import com.iu.start.bankBook.BankBookDTO;
 @Controller
 @RequestMapping(value = "/member/*")
 public class MemberController {
-	
-	private BankMembersDAO bankMembersDAO;
-	
 	@Autowired
-	public MemberController(BankMembersDAO bankMembersDAO) {
-		this.bankMembersDAO = bankMembersDAO;
-	}
+	private BankMembersDAO bankMembersDAO;
 	
 	@RequestMapping(value = "Logout.do", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {

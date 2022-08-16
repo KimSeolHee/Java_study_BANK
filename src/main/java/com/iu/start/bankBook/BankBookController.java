@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,12 +17,14 @@ import com.iu.start.member.BankMembersDTO;
 @Controller
 @RequestMapping(value = "/bankbook/*")
 public class BankBookController {
-	BankBookDAO dao = new BankBookDAO();
+	
+	@Autowired
+	private BankBookService bankBookService;
 	
 	@RequestMapping(value = "list.do", method = RequestMethod.GET)
 	public void list(HttpServletRequest re) throws Exception {
 		System.out.println("list 실행");
-		ArrayList<BankBookDTO> ar = dao.getList();
+		ArrayList<BankBookDTO> ar = bankBookService.getList();
 		re.setAttribute("list", ar);
 		
 //		return "bankbook/list"; 
@@ -38,7 +41,7 @@ public class BankBookController {
 		BankBookDTO dto = new BankBookDTO();
 		dto.setBookNum(bookNum);
 		
-		dto = dao.getDetail(dto);
+		dto = bankBookService.getDetail(dto);
 		mv.addObject("detail", dto);
 		mv.setViewName("bankbook/detail");
 		
@@ -77,7 +80,7 @@ public class BankBookController {
 		System.out.println("add 실행 - post");
 
 		ModelAndView mv = new ModelAndView();
-		int result = dao.setBankBook(dto);
+		int result = bankBookService.setBankBook(dto);
 		
 		if(result  != 0) {
 			System.out.println("성공");
@@ -104,7 +107,7 @@ public class BankBookController {
 	@RequestMapping(value = "update.do", method = RequestMethod.POST)
 	public ModelAndView update(BankBookDTO dto) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = dao.setUpdate(dto);
+		int result = bankBookService.setUpdate(dto);
 		if(result != 0) {
 			System.out.println("성공!💯💯👏");
 		}
@@ -116,7 +119,7 @@ public class BankBookController {
 	public ModelAndView delete(BankBookDTO dto) throws Exception {
 		System.out.println("delete 실행(☞ﾟヮﾟ)☞☜(ﾟヮﾟ☜)");
 		ModelAndView mv = new ModelAndView();
-		int result = dao.setDelete(dto);
+		int result = bankBookService.setDelete(dto);
 		System.out.println(result);
 		mv.setViewName("redirect: list.do");
 		return mv;
