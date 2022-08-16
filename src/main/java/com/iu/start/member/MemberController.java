@@ -7,6 +7,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,13 @@ import com.iu.start.bankBook.BankBookDTO;
 @Controller
 @RequestMapping(value = "/member/*")
 public class MemberController {
+	
+	private BankMembersDAO bankMembersDAO;
+	
+	@Autowired
+	public MemberController(BankMembersDAO bankMembersDAO) {
+		this.bankMembersDAO = bankMembersDAO;
+	}
 	
 	@RequestMapping(value = "Logout.do", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {
@@ -48,8 +56,7 @@ public class MemberController {
 	@RequestMapping(value = "search.do", method = RequestMethod.POST)
 	public String getSearchById(Model model, String id) throws Exception {
 		System.out.println("search-post 실행");
-		BankMembersDAO dao = new BankMembersDAO();
-		ArrayList<BankMembersDTO> ar = dao.getSearchById(id);
+		ArrayList<BankMembersDTO> ar = bankMembersDAO.getSearchById(id);
 		if(ar.size() != 0) {
 			model.addAttribute("list", ar);			
 		}else {
@@ -87,8 +94,7 @@ public class MemberController {
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public String login(HttpSession session, BankMembersDTO dto) throws Exception {
 		System.out.println("로그인 실행-post");
-		BankMembersDAO dao = new BankMembersDAO();
-		dto = dao.getLogin(dto);
+		dto = bankMembersDAO.getLogin(dto);
 		if(dto != null) {
 			System.out.println("성공");
 		}else if(dto == null) {
@@ -148,9 +154,7 @@ public class MemberController {
 	public String join(BankMembersDTO BankMembersDTO) throws Exception {
 		System.out.println("회원가입 Post 실행");
 		
-		BankMembersDAO dao = new BankMembersDAO();
-		
-		int result = dao.setJoin(BankMembersDTO);
+		int result = bankMembersDAO.setJoin(BankMembersDTO);
 		
 		if(result != 0) {
 			System.out.println("성공");
