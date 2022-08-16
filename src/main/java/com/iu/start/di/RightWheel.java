@@ -2,6 +2,6 @@ package com.iu.start.di;
 
 import org.springframework.stereotype.Component;
 
-public class Engine {
+public class RightWheel extends Wheel{
 
 }

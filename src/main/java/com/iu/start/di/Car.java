@@ -3,7 +3,6 @@ package com.iu.start.di;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
 public class Car {
 	
 	//Car는 Engine이 없으면 X
@@ -17,9 +16,8 @@ public class Car {
 	//	3. public Car() {
 	//			this.engine= new Engine();
 	//		}
-		@Autowired
-		public Car(Engine engine, Wheel leftWheel, Wheel rightWheel) {
-			this.engine = engine;
+
+		public Car(Wheel leftWheel, Wheel rightWheel) {
 			this.leftWheel= leftWheel;
 			this.rightWheel = rightWheel;
 		}
@@ -32,7 +30,7 @@ public class Car {
 		public Engine getEngine() {
 			return engine;
 		}
-		@Autowired
+
 		public void setEngine(Engine engine) {
 			this.engine = engine;
 		}
