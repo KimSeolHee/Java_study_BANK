@@ -17,6 +17,7 @@
 		<span><b>내용 : </b></span><input type="text" name="content" value="${boardDTO.content}">
 		</div>
 		<input type="submit" value="수정하기">
+		<a href="update.do?boardNum=${boardDTO.getBoardNum()}"></a>
 	</form>
 </body>
 </html>

@@ -57,7 +57,12 @@ public class BoardController {
 	public String update(BoardDTO boardDTO) throws Exception {
 		System.out.println("update - post");
 		
+		boardDTO.setBoardNum(boardDTO.getBoardNum());
+		System.out.println(boardDTO.getTitle());
+		System.out.println(boardDTO.getContent());
+		System.out.println(boardDTO.getBoardNum());
 		int result = boardDAO.setUpdate(boardDTO);
+		
 		System.out.println(result);
 		
 		if(result != 0) {
