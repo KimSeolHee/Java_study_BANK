@@ -1,10 +1,11 @@
 package com.iu.start.member;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface MembersDAO {
-	//È¸¿ø°¡ÀÔ
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int setJoin(BankMembersDTO bankMembersDTO) throws Exception; 
-	//°Ë»ö¾î ÀÔ·Â, ¾ÆÀÌµð Ã£±â(a, b, cÆ÷ÇÔ)
-	public ArrayList<BankMembersDTO> getSearchById(String search) throws Exception;
+	//ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½, ï¿½ï¿½ï¿½Ìµï¿½ Ã£ï¿½ï¿½(a, b, cï¿½ï¿½ï¿½ï¿½)
+	public List<BankMembersDTO> getSearchById(String search) throws Exception;
 }

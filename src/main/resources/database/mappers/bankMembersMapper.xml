@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+		<!DOCTYPE mapper
+		    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		    
+		    <mapper namespace="com.iu.start.member.BankMembersDAO">
+		    	<select id="getLogin" parameterType="com.iu.start.member.BankMembersDTO" resultType="com.iu.start.member.BankMembersDTO">
+		    		SELECT ID, NAME FROM BANKMEMBERS WHERE ID=#{id} AND PW=#{pw}
+		    	</select>
+		    	<insert id="setJoin" parameterType="com.iu.start.member.BankMembersDTO">
+		    		INSERT INTO BANKMEMBERS VALUES (#{id},#{pw},#{name},#{email},#{phone})
+		    	</insert>
+		    	<select id="getSearchById" parameterType="java.lang.String" resultType="com.iu.start.member.BankMembersDTO">
+		    		SELECT * FROM BANKMEMBERS WHERE ID like '%'||#{search}||'%' ORDER BY ID ASC
+		    	</select>
+		    </mapper>
+
+		    

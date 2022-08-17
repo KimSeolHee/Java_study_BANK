@@ -5,9 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.iu.start.util.DBConnector;
 
+@Repository
 public class BankBookDAO implements BookDAO{
+	@Autowired
+	private SqlSession sqlSession;
 	
 	@Override
 	public int setUpdate(BankBookDTO bookDTO) throws Exception {
