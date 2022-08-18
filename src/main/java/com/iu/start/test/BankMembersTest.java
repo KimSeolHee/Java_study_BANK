@@ -1,6 +1,7 @@
 package com.iu.start.test;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.iu.start.member.BankMembersDAO;
@@ -14,14 +15,14 @@ public class BankMembersTest {
 //		try {
 //			membersDTO.setId("tjfl");
 //			membersDTO.setPw("dffff");
-//			membersDTO.setName("¼­¸®");
+//			membersDTO.setName("ï¿½ï¿½ï¿½ï¿½");
 //			membersDTO.setEmail("tlfl64@naver.com");
 //			membersDTO.setPhone("010-2626-1111");
 //			
 //			int result = membersDAO.setJoin(membersDTO);
 //			
 //			if(result != 0) {
-//				System.out.println("´ë¼º°ø");
+//				System.out.println("ï¿½ë¼ºï¿½ï¿½");
 //			}
 //		} catch (Exception e) {
 //			// TODO Auto-generated catch block
@@ -30,8 +31,8 @@ public class BankMembersTest {
 		
 		System.out.println("test");
 			try {
-				ArrayList<BankMembersDTO> ar = membersDAO.getSearchById("SE");
-				System.out.println(ar.size()); //ar¿¡¼­ °Ë»öÇÒ ´Ü¾î°¡ ÀÖ´ÂÁö ¹Ì¸® È®ÀÎ! 
+				List<BankMembersDTO> ar = membersDAO.getSearchById("SE");
+				System.out.println(ar.size()); //arï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½Ü¾î°¡ ï¿½Ö´ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ È®ï¿½ï¿½! 
 				for(int i = 0;i  < ar.size(); i++) {
 					System.out.println(ar.get(i).getId());
 				}

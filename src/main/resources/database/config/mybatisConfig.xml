@@ -4,4 +4,9 @@
 				  "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
 				  
 
-<configuration></configuration>
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.iu.start.member.BankMembersDTO" alias="BankMembersDTO" />
+		<typeAlias type="java.lang.String" alias="String" />
+	</typeAliases>
+</configuration>

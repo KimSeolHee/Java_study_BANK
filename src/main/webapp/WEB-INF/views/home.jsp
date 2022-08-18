@@ -9,6 +9,8 @@
 <h1>
 	My Bank Page 🙆‍♀️🙆‍♀️ 
 </h1>
+<h3>확인하려고 씀</h3>
+<h3>확인하려고 씀2</h3>
 <c:if test="${empty sessionScope.member}">
 <div>
 	<a href = "./member/login.do"><b>로그인🔑</b></a>
@@ -18,7 +20,7 @@
 </div>
 </c:if>
 <c:if test="${not empty sessionScope.member}">
-<h3>${sessionScope.member.name} 님 환영합니다!</h3>
+<h3>${sessionScope.member.name}님 환영합니다!</h3>
 <div>
 	<a href="./member/Logout.do"><b>로그아웃</b></a>
 </div>
