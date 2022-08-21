@@ -1,36 +1,69 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
 </head>
 <body>
-	<h1>Join page</h1>
-    <div class="container">
+<c:import url="../template/header.jsp"></c:import>
+    <div class="container col-lg-6 mt-4">
         <form action="join.do" method="post" >
-            <h4>아이디</h4>
-            <input type="text" name="id">
-            
-            <h4>비밀번호</h4>
-            <input type="password" name="pw">
-            <h4>이름</h4>
-            <input type="text" name="name">
-            <h4>본인 확인 이메일 <span>(선택)</span></h4>
-            <input type="email" name="email">
-            <h4>휴대전화</h4>
-            <div>
-                <input type="number" name="phone" placeholder="전화번호 입력">
-            </div>
-            <div>
-                <input type = "submit" value="가입하기">
-            </div>
+        	<div class="row">
+				  <div class="mb-3 row">
+				    <div>
+				    <label for="staticEmail" class="col-sm-2 col-form-label">id</label>
+				    </div>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" name = "id" placeholder="아이디">
+				    </div>
+				  </div>
+				  <div class="mb-3 row">
+				  <div>
+				    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+				   </div>
+				    <div class="col-sm-10">
+				      <input type="password" class="form-control"  name = "pw" placeholder="패스워드">
+				   </div>
+				    <div>
+				    <label for="name" class="col-sm-2 col-form-label">Name</label>
+				   </div>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control"  name = "name" placeholder="이름">
+				   </div>
+				   <div>
+				    <label for="email" class="col-sm-2 col-form-label">email</label>
+				   </div>
+				   <div class="input-group mb-3">
+					  <input type="text" name="email" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+					  <span class="input-group-text" id="basic-addon2">@example.com</span>
+					</div>
+					 <div>
+				    <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+				   </div>
+				    <div class="col-sm-10">
+				      <input type="number" class="form-control"  name = "phone" placeholder="휴대전화입력">
+				   </div>
+				   <div class="col-auto pt-3 mb-3">
+				    <button type="submit" class="btn btn-primary mb-3 bg-dark text-white">가입하기</button>
+				 </div>
+				   
+			  	 </div>
+			   </div>
         </form>
-        <hr>
-        <div>
-        	<a href="/">홈으로</a>
-        </div>
     </div>
+        <c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

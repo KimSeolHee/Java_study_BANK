@@ -1,12 +1,18 @@
 package com.iu.start.board;
 
+import java.awt.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.iu.start.util.DBConnector;
 
+@Repository
 public class BoardDAO {
 	
 	public ArrayList<BoardDTO> getList() throws Exception {
@@ -18,11 +24,11 @@ public class BoardDAO {
 		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
 			BoardDTO boardDTO = new BoardDTO();
-			boardDTO.setBoardNum(rs.getLong(1));
+			boardDTO.setNum(rs.getLong(1));
 			boardDTO.setTitle(rs.getString(2));
 			boardDTO.setWriter(rs.getString(4));
-			boardDTO.setWriteDate(rs.getDate(5));
-			boardDTO.setHits(rs.getInt(6));
+			boardDTO.setRegDate(rs.getDate(5));
+			boardDTO.setHit(rs.getInt(6));
 			
 			ar.add(boardDTO);
 		}
@@ -33,19 +39,19 @@ public class BoardDAO {
 	
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
 		Connection con = DBConnector.getConnection();
-		String sql="SELECT * FROM BOARD WHERE BoardNum=?";
+		String sql="SELECT * FROM BOARD WHERE num=?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setLong(1, boardDTO.getBoardNum());
+		st.setLong(1, boardDTO.getNum());
 		
 		ResultSet rs = st.executeQuery();
 		
 		if(rs.next()) {
-			boardDTO.setBoardNum(rs.getLong("boardNum"));
+			boardDTO.setNum(rs.getLong("num"));
 			boardDTO.setTitle(rs.getString("title"));
 			boardDTO.setWriter(rs.getString("writer"));
-			boardDTO.setWriteDate(rs.getDate("writeDate"));
-			boardDTO.setHits(rs.getInt("hits"));
-			boardDTO.setContent(rs.getString("content"));
+			boardDTO.setRegDate(rs.getDate("regDate"));
+			boardDTO.setHit(rs.getInt("hit"));
+			boardDTO.setContents(rs.getClob("contents"));
 		}
 		
 		DBConnector.disConnection(rs, st, con);
@@ -54,11 +60,11 @@ public class BoardDAO {
 	
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		Connection con = DBConnector.getConnection();
-		String spl="UPDATE BOARD SET title = ?, CONTENT=? WHERE BOARDNUM=?";
+		String spl="UPDATE BOARD SET title = ?, CONTENTs=TO_CLOB() WHERE NUM=?";
 		PreparedStatement st = con.prepareStatement(spl);
 		st.setString(1, boardDTO.getTitle());
-		st.setString(2, boardDTO.getContent());
-		st.setLong(3, boardDTO.getBoardNum());
+		st.setClob(2, boardDTO.getContents());
+		st.setLong(3, boardDTO.getNum());
 		int result = st.executeUpdate();
 		
 		DBConnector.disConnection(st, con);
@@ -67,9 +73,9 @@ public class BoardDAO {
 	
 	public int setDelite(BoardDTO boardDTO) throws Exception {
 		Connection con = DBConnector.getConnection();
-		String sql="delete board where boardNum=?";
+		String sql="delete board where num=?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setLong(1, boardDTO.getBoardNum());
+		st.setLong(1, boardDTO.getNum());
 		int result = st.executeUpdate();
 		
 		DBConnector.disConnection(st, con);
@@ -79,10 +85,10 @@ public class BoardDAO {
 	
 	public int setAdd(BoardDTO boardDTO) throws Exception {
 		Connection con = DBConnector.getConnection();
-		String sql="INSERT INTO BOARD VALUES (BOARD_SEQ.NEXTVAL, ?,?, ?, SYSDATE, 0)";
+		String sql="INSERT INTO BOARD VALUES (BOARD_SEQ.NEXTVAL, ?,TO_CLOB(), ?, SYSDATE, 0)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1,boardDTO.getTitle());
-		st.setString(2, boardDTO.getContent());
+		st.setClob(2, boardDTO.getContents());
 		st.setString(3, boardDTO.getWriter());
 		int result = st.executeUpdate();
 		

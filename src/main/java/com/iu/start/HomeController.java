@@ -33,7 +33,7 @@ public class HomeController {
 		response.addCookie(cookie);
 		
 		
-		return "home";
+		return "test";
 	}
 	
 }

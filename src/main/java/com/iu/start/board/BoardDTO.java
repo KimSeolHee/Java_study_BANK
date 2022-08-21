@@ -1,21 +1,22 @@
 package com.iu.start.board;
 
+import java.sql.Clob;
 import java.sql.Date;
 
 public class BoardDTO {
 	
-	private Long boardNum;
+	private Long num;
 	private String title;
-	private String content;
+	private Clob contents;
 	private String writer;
-	private Date writeDate;
-	private Integer hits;
+	private Date regDate;
+	private Integer hit;
 	
-	public Long getBoardNum() {
-		return boardNum;
+	public Long getNum() {
+		return num;
 	}
-	public void setBoardNum(Long boardNum) {
-		this.boardNum = boardNum;
+	public void setNum(Long num) {
+		this.num = num;
 	}
 	public String getTitle() {
 		return title;
@@ -23,11 +24,11 @@ public class BoardDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getContent() {
-		return content;
+	public Clob getContents() {
+		return contents;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setContents(Clob contents) {
+		this.contents = contents;
 	}
 	public String getWriter() {
 		return writer;
@@ -35,17 +36,17 @@ public class BoardDTO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public Date getWriteDate() {
-		return writeDate;
+	public Date getRegDate() {
+		return regDate;
 	}
-	public void setWriteDate(Date writeDate) {
-		this.writeDate = writeDate;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
-	public Integer getHits() {
-		return hits;
+	public Integer getHit() {
+		return hit;
 	}
-	public void setHits(Integer hits) {
-		this.hits = hits;
+	public void setHit(Integer hit) {
+		this.hit = hit;
 	}
 	
 }

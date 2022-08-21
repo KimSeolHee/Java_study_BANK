@@ -41,12 +41,13 @@ public class BankBookDAO implements BookDAO{
 	public int setBankBook(BankBookDTO BookDTO) throws Exception {
 
 		Connection con = DBConnector.getConnection();
-		String sql = "INSERT INTO BANKBOOK VALUES (?,?,?,1)";
+		String sql = "INSERT INTO BANKBOOK VALUES (?,?,?,1,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		Long millis = System.currentTimeMillis();
 		st.setLong(1, millis);
 		st.setString(2, BookDTO.getBookName());
 		st.setDouble(3, BookDTO.getBookRate());
+		st.setClob(4, BookDTO.getBookContents());
 		
 		int result = st.executeUpdate();
 		
@@ -69,6 +70,7 @@ public class BankBookDAO implements BookDAO{
 			dto.setBookName(rs.getString(2)); 
 			dto.setBookRate(rs.getDouble(3)); 
 			dto.setBookSale(rs.getInt(4)); 
+			dto.setBookContents(rs.getClob(5)); 
 			ar.add(dto);
 		}
 		DBConnector.disConnection(rs, st, con);
@@ -101,6 +103,7 @@ public class BankBookDAO implements BookDAO{
 			dto.setBookName(rs.getNString("bookName"));
 			dto.setBookSale(rs.getInt("bookSale"));
 			dto.setBookRate(rs.getDouble("bookRate"));	
+			dto.setBookContents(rs.getClob("bookContents"));	
 		}
 		DBConnector.disConnection(rs, st, con);
 		return dto;

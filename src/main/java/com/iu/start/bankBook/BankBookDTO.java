@@ -1,10 +1,13 @@
 package com.iu.start.bankBook;
 
+import java.sql.Clob;
+
 public class BankBookDTO {
 	private Long bookNum;
 	private String bookName;
 	private Double bookRate;
 	private Integer bookSale;
+	private Clob bookContents;
 	
 	
 	public Long getBookNum() {
@@ -30,6 +33,12 @@ public class BankBookDTO {
 	}
 	public void setBookSale(Integer bookSale) {
 		this.bookSale = bookSale;
+	}
+	public Clob getBookContents() {
+		return bookContents;
+	}
+	public void setBookContents(Clob bookContents) {
+		this.bookContents = bookContents;
 	}
 	
 	

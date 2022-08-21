@@ -26,9 +26,6 @@ public class BankBookController {
 		System.out.println("list 실행");
 		ArrayList<BankBookDTO> ar = bankBookService.getList();
 		re.setAttribute("list", ar);
-		
-//		return "bankbook/list"; 
-// requestMapping주소와 return view주소와 같으면 return 생략가능!
 	}
 	
 	@RequestMapping(value = "detail.do", method = RequestMethod.GET)
@@ -48,26 +45,6 @@ public class BankBookController {
 		return mv;
 	}
 
-// 2번째 방법
-//	@RequestMapping(value = "detail", method = RequestMethod.GET)
-//	public String detail(HttpServletRequest re) throws Exception {
-//		System.out.println("detail 실행");
-//		
-//		Long bookNum = Long.parseLong(re.getParameter("bookNum"));
-//		
-//		System.out.println("booknum: "+ bookNum);
-//		
-//		BankBookDTO dto = new BankBookDTO();
-//		dto.setBookNum(bookNum);
-//		
-//		dto = dao.getDetail(dto);
-//		
-//		re.setAttribute("detail", dto);
-//		
-//		return "bankbook/detail";
-//	}
-	
-	// /bankbook/add , /WEB-INF/views/bankbook/add.jsp
 	@RequestMapping(value = "add.do", method = RequestMethod.GET)
 	public String add() {
 		System.out.println("add 실행");
@@ -77,7 +54,6 @@ public class BankBookController {
 	
 	@RequestMapping(value = "add.do", method = RequestMethod.POST)
 	public ModelAndView add(BankBookDTO dto) throws Exception {
-		System.out.println("add 실행 - post");
 
 		ModelAndView mv = new ModelAndView();
 		int result = bankBookService.setBankBook(dto);

@@ -29,12 +29,12 @@ public class BoardController {
 	}
 	
 	@RequestMapping("detail.do")
-	public ModelAndView detail(Long boardNum) throws Exception {
+	public ModelAndView detail(Long num) throws Exception {
 		System.out.println("detail-GET확인");
 		ModelAndView mv = new ModelAndView();
 		BoardDTO boardDTO = new BoardDTO();
 		
-		boardDTO.setBoardNum(boardNum);
+		boardDTO.setNum(num);
 		boardDTO = boardDAO.getDetail(boardDTO);
 		mv.addObject("detail", boardDTO);
 		mv.setViewName("/board/detail");
@@ -57,10 +57,7 @@ public class BoardController {
 	public String update(BoardDTO boardDTO) throws Exception {
 		System.out.println("update - post");
 		
-		boardDTO.setBoardNum(boardDTO.getBoardNum());
-		System.out.println(boardDTO.getTitle());
-		System.out.println(boardDTO.getContent());
-		System.out.println(boardDTO.getBoardNum());
+		boardDTO.setNum(boardDTO.getNum());
 		int result = boardDAO.setUpdate(boardDTO);
 		
 		System.out.println(result);
@@ -73,10 +70,11 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "delete.do", method = RequestMethod.GET)
-	public ModelAndView delete(Long boardNum) throws Exception {
+	public ModelAndView delete(Long num) throws Exception {
 		System.out.println("delete 실행확인");
 		BoardDTO boardDTO = new BoardDTO();
-		boardDTO.setBoardNum(boardNum);
+		boardDTO.setNum(num);
+		System.out.println(boardDTO.getNum());
 		boardDAO.setDelite(boardDTO);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect: list.do");
@@ -100,7 +98,7 @@ public class BoardController {
 	@RequestMapping(value = "add.do", method = RequestMethod.POST)
 	public String add(HttpSession session, BoardDTO boardDTO) throws Exception {
 		System.out.println("add-post");
-		int result = boardDAO.setAdd(boardDTO);
+		boardDAO.setAdd(boardDTO);
 		
 		session.setAttribute("add", boardDTO);
 		return "redirect: list.do";
