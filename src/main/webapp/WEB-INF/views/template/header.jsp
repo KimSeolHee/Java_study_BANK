@@ -33,7 +33,7 @@
             <a class="nav-link active" aria-current="page" href="/">홈</a>
      		<c:choose>
 	          <c:when test="${not empty sessionScope.member}">
-			    <a class="nav-link active" href="#">마이페이지</a>
+			    <a class="nav-link active" href="/member/myPage.do">마이페이지</a>
 			    <a class="nav-link active" href="/member/Logout.do">로그아웃</a>
 		      </c:when>
 		      <c:otherwise>

@@ -2,6 +2,7 @@ package com.iu.start.member;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.print.attribute.standard.RequestingUserName;
 import javax.servlet.RequestDispatcher;
@@ -17,6 +18,8 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContext;
 
+import com.iu.start.bankAccount.BankAccountDTO;
+import com.iu.start.bankAccount.BankAccountService;
 import com.iu.start.bankBook.BankBookDTO;
 
 //이 클래스는 Controller역할, 
@@ -27,6 +30,23 @@ public class MemberController {
 
 	@Autowired
 	private BankMembersService bankMembersService;
+//	@Autowired
+//	private BankAccountService bankAccountService;
+	
+	@RequestMapping(value="myPage.do", method = RequestMethod.GET)
+	public ModelAndView myPage(HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		BankMembersDTO bankMembersDTO = (BankMembersDTO)session.getAttribute("member");
+//		Map<String, Object> map = bankMembersService.getMyPage(bankMembersDTO);
+//		mv.addObject("map", map);
+		
+		bankMembersDTO = bankMembersService.getMyPage(bankMembersDTO);
+//		List<BankAccountDTO> ar = bankAccountService.getListByUserName(bankMembersDTO);
+//		mv.addObject("list", ar);
+	    mv.addObject("dto", bankMembersDTO);
+		
+		return mv;
+	}
 	
 	@RequestMapping(value = "Logout.do", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {

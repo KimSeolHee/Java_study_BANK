@@ -8,5 +8,8 @@
 	<typeAliases>
 		<typeAlias type="com.iu.start.member.BankMembersDTO" alias="BankMembersDTO" />
 		<typeAlias type="java.lang.String" alias="String" />
+		<typeAlias type="com.iu.start.bankAccount.BankAccountDTO" alias="BankAccountDTO"/>
+		<typeAlias type="com.iu.start.bankBook.BankBookDTO" alias="BankBookDTO"/>
+		<typeAlias type="java.util.List" alias="List"/>
 	</typeAliases>
 </configuration>
