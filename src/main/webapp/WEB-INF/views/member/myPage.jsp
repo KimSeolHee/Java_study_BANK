@@ -25,21 +25,31 @@
 <table class="table table-striped table-hover">
 		<thead>
 			<tr>
-				<th>Id</th><th>NAME</th><th>EMAIL</th><th>PHONE</th><th>accountNum</th><th>bookName</th><th>accountDate</th>
+				<th>Id</th><th>NAME</th><th>EMAIL</th><th>PHONE</th>
 			</tr>
 		</thead>
 	<tbody>
-	<tr>
-	<td>${requestScope.dto.id}</td>
-	<td>${dto.name}</td>
-	<td>${dto.email}</td>
-	<td>${dto.phone}</td>
+		<tr>
+			<td>${requestScope.dto.id}</td>
+			<td>${dto.name}</td>
+			<td>${dto.email}</td>
+			<td>${dto.phone}</td>
+			</tr>
+		</tbody>
+			</table>
+	<table class="table table-striped table-hover">
+	<thead>
+			<tr>
+				<th>accountNum</th><th>bookName</th><th>accountDate</th>
+			</tr>
+	</thead>
 	<c:forEach items="${dto.bankAccountDTOs}" var="dto">
-					<td>${pageScope.dto.accountNum}</td>
-					<td>${dto.bankBookDTO.bookName}</td>	
-					<td>${dto.accountDate}</td>	
-			</c:forEach>
+	<tr>
+			<td>${pageScope.dto.accountNum}</td>
+			<td>${dto.bankBookDTO.bookName}</td>	
+			<td>${dto.accountDate}</td>	
 	</tr>
+			</c:forEach>
 	</tbody>
 	
 <%-- <c:forEach items="${list}" var="dto">
