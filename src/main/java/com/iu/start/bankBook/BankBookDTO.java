@@ -1,6 +1,6 @@
 package com.iu.start.bankBook;
 
-import java.sql.Clob;
+
 import java.util.List;
 
 import com.iu.start.bankAccount.BankAccountDTO;
@@ -10,7 +10,7 @@ public class BankBookDTO {
 	private String bookName;
 	private Double bookRate;
 	private Integer bookSale;
-	private Clob bookContents;
+	private String bookContents;
 	private List<BankAccountDTO> bankAccountDTOs;
 	
 	
@@ -38,10 +38,10 @@ public class BankBookDTO {
 	public void setBookSale(Integer bookSale) {
 		this.bookSale = bookSale;
 	}
-	public Clob getBookContents() {
+	public String getBookContents() {
 		return bookContents;
 	}
-	public void setBookContents(Clob bookContents) {
+	public void setBookContents(String bookContents) {
 		this.bookContents = bookContents;
 	}
 	public List<BankAccountDTO> getBankAccountDTOs() {

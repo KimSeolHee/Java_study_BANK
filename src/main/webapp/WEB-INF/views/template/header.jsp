@@ -42,7 +42,6 @@
 		      </c:otherwise>
 		      </c:choose>
             <a class="nav-link active" href="/bankbook/list.do">상품리스트</a>
-            <a class="nav-link active" href="/bankbook/add.do">통장추가</a>
             <a class="nav-link active" href="/member/search.do">회원검색</a>
             <a class="nav-link active" href="/board/list.do">게시판</a>
           </div>

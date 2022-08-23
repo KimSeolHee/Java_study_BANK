@@ -1,6 +1,8 @@
 package com.iu.start.bankBook;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,10 +23,10 @@ public class BankBookController {
 	@Autowired
 	private BankBookService bankBookService;
 	
-	@RequestMapping(value = "list.do", method = RequestMethod.GET)
-	public void list(HttpServletRequest re) throws Exception {
-		System.out.println("list 실행");
-		ArrayList<BankBookDTO> ar = bankBookService.getList();
+	@RequestMapping(value = "list", method = RequestMethod.GET)
+	public void list(HttpServletRequest re) throws Exception{
+		List<BankBookDTO> ar= bankBookService.getList();
+		
 		re.setAttribute("list", ar);
 	}
 	
@@ -56,6 +58,9 @@ public class BankBookController {
 	public ModelAndView add(BankBookDTO dto) throws Exception {
 
 		ModelAndView mv = new ModelAndView();
+		Calendar ca = Calendar.getInstance();
+		dto.setBookNum(ca.getTimeInMillis());
+		
 		int result = bankBookService.setBankBook(dto);
 		
 		if(result  != 0) {
