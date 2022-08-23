@@ -28,15 +28,16 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <div class="container col-lg-8">
-	<div class="mb-2 mt-5">	
-	<h3>통장리스트📖</h3>
-	</div>
+	<br>
+	<div class="mb-3 mt-5">	
+	<h2>통장리스트📖</h2>
+</div>
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Rate</th>
-      <th scope="col">Contents</th>
+      <th scope="col">제목</th>
+      <th scope="col">이율</th>
+      <th scope="col">내용</th>
     </tr>
   </thead>
   <tbody>
@@ -54,7 +55,9 @@
 		<a href="/">홈으로</a>
 	</div>
 	</div>
-	
+		<br>
+	<br>
+		<br>
 	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

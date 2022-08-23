@@ -23,7 +23,9 @@
 	<div class=" container mt-5 mb-5 col-lg-5">
 		<div class="mb-3">
 	<br>
+	<br>
 		<h4><b>사용자 조회🕵️‍♀️</b></h4>
+	<br>
 		</div>
 		<form action="search.do" method="post">
 			<div class="input-group  col-lg-8">
@@ -35,12 +37,14 @@
 			  </button>
 		</div>
 	</form>
-	<br>
-	<br>
-	<br>
 	</div>
-	<c:import url="../template/footer.jsp"></c:import>
-
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

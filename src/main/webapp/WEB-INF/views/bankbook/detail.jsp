@@ -24,28 +24,33 @@
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
-	<div class="container col-lg-8">
-	<div class="mb-2 mt-5"><h3>조회 통장 상세보기📋</h3></div>
+	<div class="container col-lg-6">
+	<br>
+	<div class="mb-2 mt-5"><h2>조회 통장 상세보기📋</h2></div>
 	<table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">Num</th>
-      <th scope="col">Name</th>
-      <th scope="col">Rate</th>
-      <th scope="col">Sale</th>
-      <th scope="col">contents</th>
+      <th scope="col">번호</th>
+      <th scope="col">이율</th>
+      <th scope="col">판매여부</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>${requestScope.detail.getBookNum()}</td>
-	  <td>${requestScope.detail.bookName}</td>
 	  <td>${detail.bookRate}</td>
 	  <td>${detail.bookSale}</td>
-	  <td>${detail.bookContents}</td>
     </tr>
   </tbody>
 </table>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label"><b>통장이름</b></label>
+			<input type="text" readonly class="form-control" id="exampleFormControlInput1" value="${requestScope.detail.bookName}">
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlTextarea1" class="form-label"><b>상세내용</b></label>
+			<textarea class="form-control" readonly id="exampleFormControlTextarea1" rows="5">${detail.bookContents}</textarea>
+		</div>
 	<div class="mt-5 mb-4">
 	<a href="list.do">list보기</a>
 	<a href="../member/login.do">로그인하기</a>
@@ -56,6 +61,7 @@
 	</c:if>
 	</div>
 	</div>
+	<br>
 	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
