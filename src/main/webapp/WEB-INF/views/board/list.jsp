@@ -43,16 +43,18 @@
 			<nav aria-label="Page navigation example">
   <ul class="pagination" style="justify-content: center;">
     <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
+    <c:if test="${pager.startNum != 1}">
+      <a class="page-link" href="./list.do?page=${pager.startNum-1}" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
+      </c:if>
     </li>
     <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
     	<li class="page-item"><a class="page-link" href="./list.do?page=${pageScope.i}">${pageScope.i}</a></li>
     </c:forEach>
 
     <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
+      <a class="page-link" href="./list.do?page=${pager.lastNum+1}" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>

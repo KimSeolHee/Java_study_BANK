@@ -37,7 +37,7 @@ public class Pager {
 		// 현재 블럭 구하기
 		Long curBlock = (long) Math.ceil((double) this.getPage()/this.getPerBlock());
 		// curBlock으로 startNum, lastNum 계산
-		this.startNum = (curBlock-1)*this.getPerBlock() + 1;
+		this.startNum = (curBlock*this.getPerBlock()) - 4;
 		this.lastNum = curBlock*this.getPerBlock();
 	}
 	
