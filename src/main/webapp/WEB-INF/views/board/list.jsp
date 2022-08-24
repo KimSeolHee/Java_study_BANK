@@ -20,7 +20,7 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-	<section class="container col-lg-8">
+	<section class="container col-lg-8" style="text-align:center;">
 	<div class="mt-5 mb-3"><h2>${requestScope.board}</h2></div>
 		<table class="table table-striped table-hover">
 			<thead>
@@ -40,6 +40,24 @@
 				</c:forEach>
 			</tbody>
 		</table>	
+			<nav aria-label="Page navigation example">
+  <ul class="pagination" style="justify-content: center;">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+    	<li class="page-item"><a class="page-link" href="./list.do?page=${pageScope.i}">${pageScope.i}</a></li>
+    </c:forEach>
+
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 			<div>
 				<c:if test="${not empty sessionScope.member}">
 				<a href="./add.do"><b>글작성✏</b></a>

@@ -21,9 +21,21 @@ public class NoticeDAOTest extends MyAbstractTest {
 	
 	@Test
 	public void getCount() throws Exception{
-		long result = noticeDAO.getCount();
-		System.out.println("result : "+result);
-		assertEquals(114L, result);
+//		long result = noticeDAO.getCount();
+//		System.out.println("result : "+result);
+//		assertEquals(114L, result);
+//		
+//		Long totalCount= noticeDAO.getCount();
+//		Long num = (long) Math.ceil((double)totalCount/10);
+//		System.out.println(num);
+		//15 / 5 / 3
+		//20 / 5 / 4
+		//22 / 5 / 5
+		Long totalPage = 26L;
+		Long perBlock = 5L;
+		Long totalBlock = (long) Math.ceil((double)totalPage/perBlock);
+		System.out.println(totalBlock);
+		
 	}
 //	@Test
 //	public void getList() throws Exception {
