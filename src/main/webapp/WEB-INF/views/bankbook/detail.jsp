@@ -51,9 +51,7 @@
 			<label for="exampleFormControlTextarea1" class="form-label"><b>상세내용</b></label>
 			<textarea class="form-control" readonly id="exampleFormControlTextarea1" rows="5">${detail.bookContents}</textarea>
 		</div>
-	<div class="mt-5 mb-4">
-	<a href="list.do">list보기</a>
-	<a href="../member/login.do">로그인하기</a>
+	<div class="mt-4 mb-4">
 	<a href="update.do?bookNum=${detail.bookNum}">수정</a>
 	<a href="delete.do?bookNum=${detail.bookNum}">삭제</a>
 	<c:if test ="${not empty sessionScope.member}">
@@ -61,7 +59,6 @@
 	</c:if>
 	</div>
 	</div>
-	<br>
 	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

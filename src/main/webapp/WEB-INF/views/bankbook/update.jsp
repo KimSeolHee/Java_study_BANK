@@ -19,7 +19,7 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-<section class="container col-lg-4">
+<section class="container col-lg-3">
 		<br>
 		<div class="mt-5 mb-3"><h2>통장 수정👩‍🔧‍</h2></div>
 		<form action="./update.do" method="post">

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.start.board.impl.BoardDTO;
@@ -20,11 +21,12 @@ public class QnaController {
 	
 	//글목록
 	@RequestMapping(value = "list.do", method = RequestMethod.GET)
-	public ModelAndView getList() throws Exception{
-		List<BoardDTO> ar= qnaService.getList();
+	public ModelAndView getList(@RequestParam(defaultValue = "1") Long page) throws Exception{
+		List<BoardDTO> ar= qnaService.getList(page);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", ar);
-		mv.setViewName("qna/list");
+		mv.addObject("board","Qna✔");
+		mv.setViewName("board/list");
 		
 		return mv;
 	}
@@ -33,13 +35,15 @@ public class QnaController {
 	public String getDetail(BoardDTO boardDTO, Model model) throws Exception{
 		boardDTO = qnaService.getDetail(boardDTO);
 		model.addAttribute("boardDTO", boardDTO);
+		model.addAttribute("board", "QNA");
 		
-		return "qna/detail";
+		return "board/detail";
 	}
 	//글작성
 	@RequestMapping(value = "add.do", method = RequestMethod.GET)
-	public String setAdd() throws Exception{
-		return "qna/add";
+	public String setAdd(Model model) throws Exception{
+		model.addAttribute("board", "QNA");
+		return "board/add";
 	}
 	@RequestMapping(value = "add.do", method = RequestMethod.POST)
 	public ModelAndView setAdd(BoardDTO boardDTO) throws Exception{
@@ -54,7 +58,8 @@ public class QnaController {
 	public ModelAndView setUpdate(BoardDTO boardDTO,ModelAndView mv) throws Exception{
 		boardDTO = qnaService.getDetail(boardDTO);
 		mv.addObject("boardDTO", boardDTO);
-		mv.setViewName("qna/update");
+		mv.addObject("board", "QNA");
+		mv.setViewName("board/update");
 		
 		return mv;
 	}

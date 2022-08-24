@@ -21,7 +21,7 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 	<section class="container col-lg-8">
-	<div class="mt-5 mb-3"><h2>Notice📢</h2></div>
+	<div class="mt-5 mb-3"><h2>${requestScope.board}</h2></div>
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
@@ -29,13 +29,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${requestScope.list}" var="boardDTO">
+				<c:forEach items="${requestScope.list}" var="BoardDTO">
 					<tr>
-						<td>${pageScope.boardDTO.num}</td>
-						<td><a href="./detail.do?num=${boardDTO.getNum()}">${pageScope.boardDTO.title}</a></td>
-						<td>${pageScope.boardDTO.writer}</td>
-						<td>${pageScope.boardDTO.regDate}</td>
-						<td>${pageScope.boardDTO.hit}</td>
+						<td>${pageScope.BoardDTO.num}</td>
+						<td><a href="./detail.do?num=${BoardDTO.getNum()}">${pageScope.BoardDTO.title}</a></td>
+						<td>${pageScope.BoardDTO.writer}</td>
+						<td>${pageScope.BoardDTO.regDate}</td>
+						<td>${pageScope.BoardDTO.hit}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -44,10 +44,8 @@
 				<c:if test="${not empty sessionScope.member}">
 				<a href="./add.do"><b>글작성✏</b></a>
 				</c:if>
-				<a href="/"><b>Home🏘</b></a>
 			</div>
 	</section>
-	<br>
 	<br>
 <c:import url="../template/footer.jsp"></c:import>
 </body>

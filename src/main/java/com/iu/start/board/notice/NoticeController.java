@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.start.board.impl.BoardDTO;
@@ -18,13 +20,19 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
+	@ModelAttribute("board")
+	public String getBoard() {
+		return "Notice";
+	}
+	
 	//글목록
 	@RequestMapping(value = "list.do", method = RequestMethod.GET)
-	public ModelAndView getList() throws Exception{
-		List<BoardDTO> ar = noticeService.getList();
+	public ModelAndView getList(@RequestParam(defaultValue = "1") Long page) throws Exception{
+		List<BoardDTO> ar = noticeService.getList(page);
+		System.out.println("Page="+page);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", ar);
-		mv.setViewName("notice/list"); 
+		mv.setViewName("board/list"); 
 		
 		return mv;
 	}
@@ -33,12 +41,12 @@ public class NoticeController {
 	public String getDetail(BoardDTO boardDTO, Model model) throws Exception{
 		boardDTO = noticeService.getDetail(boardDTO);
 		model.addAttribute("boardDTO", boardDTO);
-		return "notice/detail";
+		return "board/detail";
 	}
 	//글작성
 	@RequestMapping(value = "add.do", method = RequestMethod.GET)
-	public String setAdd() throws Exception{
-		return "notice/add";
+	public String setAdd(Model model) throws Exception{
+		return "board/add";
 	}
 	@RequestMapping(value = "add.do", method = RequestMethod.POST)
 	public ModelAndView setAdd(BoardDTO boardDTO) throws Exception{
@@ -53,7 +61,7 @@ public class NoticeController {
 	public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv) throws Exception{
 		boardDTO = noticeService.getDetail(boardDTO);
 		mv.addObject("boardDTO", boardDTO);
-		mv.setViewName("notice/update");
+		mv.setViewName("board/update");
 		
 		return mv;
 	}

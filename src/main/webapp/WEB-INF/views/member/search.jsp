@@ -20,11 +20,11 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-	<div class=" container mt-5 mb-5 col-lg-5">
+	<div class=" container mt-5 mb-5 col-lg-5"style="padding-left: 120px;">
 		<div class="mb-3">
 	<br>
 	<br>
-		<h4><b>사용자 조회🕵️‍♀️</b></h4>
+		<h2>사용자 조회🕵️‍♀️</h2>
 	<br>
 		</div>
 		<form action="search.do" method="post">
@@ -38,6 +38,7 @@
 		</div>
 	</form>
 	</div>
+	<br>
 	<br>
 	<br>
 	<br>

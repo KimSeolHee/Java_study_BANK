@@ -27,7 +27,7 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-<div class="container col-lg-8">
+<div class="container col-lg-6">
 	<br>
 	<div class="mb-3 mt-5">	
 	<h2>통장리스트📖</h2>
@@ -50,13 +50,13 @@
     </c:forEach>
   </tbody>
 </table>
-	<div class="mb-5 mt-2">
-		<a href="add.do">상품등록</a>
-		<a href="/">홈으로</a>
+	<div class="mb-5 mt-4">
+		<button class="btn btn-primary mb-3 bg-dark text-white"><a href="add.do">상품등록</a></button>
 	</div>
 	</div>
 		<br>
-	<br>
+		<br>
+		<br>
 		<br>
 	<c:import url="../template/footer.jsp"></c:import>
 </body>

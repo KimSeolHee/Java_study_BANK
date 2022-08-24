@@ -20,7 +20,7 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-<section class="container col-lg-8">
+<section class="container col-lg-6">
 <div class="mt-5 mb-3"><h2>myPage🥰</h2></div>
 <table class="table table-striped table-hover">
 		<thead>

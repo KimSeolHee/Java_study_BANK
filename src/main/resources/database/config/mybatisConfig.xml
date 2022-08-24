@@ -14,5 +14,6 @@
 		<typeAlias type="com.iu.start.board.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.iu.start.board.impl.BoardDTO" alias="BoardDTO"/>
 		<typeAlias type="com.iu.start.board.qna.QnaDTO" alias="QnaDTO"/>
+		<typeAlias type="java.lang.Long" alias="Long" />
 	</typeAliases>
 </configuration>

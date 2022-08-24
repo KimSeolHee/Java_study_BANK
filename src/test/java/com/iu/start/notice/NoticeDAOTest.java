@@ -18,49 +18,62 @@ import com.iu.start.board.notice.NoticeDTO;
 public class NoticeDAOTest extends MyAbstractTest {
 	@Autowired
 	private NoticeDAO noticeDAO;
-	@Test
-	public void getList() throws Exception {
-		List<BoardDTO> ar = noticeDAO.getList();
-		
-		assertNotEquals(0, ar.size());
-	}
-
-	@Test
-	public void getDetail() throws Exception {
-		BoardDTO boardDTO = new BoardDTO();
-		boardDTO.setNum(65L);
-		boardDTO = noticeDAO.getDetail(boardDTO);
-		
-		assertNotNull(boardDTO);
-	}
-	@Test
-	public void setAdd() throws Exception {
-		NoticeDTO noticeDTO = new NoticeDTO();
-		noticeDTO.setTitle("test");
-		noticeDTO.setWriter("tttt");
-		noticeDTO.setContents("테스트중입니다.");
-		int result = noticeDAO.setAdd(noticeDTO);
-		
-		assertEquals(1, result);
-	}
-	@Test
-	public void setUpdate() throws Exception {
-		NoticeDTO noticeDTO = new NoticeDTO();
-		noticeDTO.setTitle("gg?");
-		noticeDTO.setContents("ㅇㅇㅇㅇㅇㅇ");
-		noticeDTO.setNum(81L);
-		
-		int result = noticeDAO.setUpdate(noticeDTO);
-		assertEquals(1, result);
-	}
 	
 	@Test
-	public void setDelete() throws Exception {
-		BoardDTO boardDTO = new BoardDTO();
-		boardDTO.setNum(69L);
-		int result = noticeDAO.setDelete(boardDTO);
-		
-		assertEquals(1, result);
+	public void getCount() throws Exception{
+		long result = noticeDAO.getCount();
+		System.out.println("result : "+result);
+		assertEquals(114L, result);
 	}
+//	@Test
+//	public void getList() throws Exception {
+//		List<BoardDTO> ar = noticeDAO.getList();
+//		
+//		assertNotEquals(0, ar.size());
+//	}
+//
+//	@Test
+//	public void getDetail() throws Exception {
+//		BoardDTO boardDTO = new BoardDTO();
+//		boardDTO.setNum(65L);
+//		boardDTO = noticeDAO.getDetail(boardDTO);
+//		
+//		assertNotNull(boardDTO);
+//	}
+//	@Test
+//	public void setAdd() throws Exception {
+//		for(int i=0;i<100;i++) {
+//			NoticeDTO noticeDTO = new NoticeDTO();
+//			noticeDTO.setTitle("Title"+i);
+//			noticeDTO.setWriter("tttt");
+//			noticeDTO.setContents("테스트중입니다."+i);
+//			int result = noticeDAO.setAdd(noticeDTO);	
+//			
+//			if(i%10==0) {
+//				Thread.sleep(500);
+//			}
+//		}
+//		
+//		System.out.println("Finish");
+//	}
+//	@Test
+//	public void setUpdate() throws Exception {
+//		NoticeDTO noticeDTO = new NoticeDTO();
+//		noticeDTO.setTitle("gg?");
+//		noticeDTO.setContents("ㅇㅇㅇㅇㅇㅇ");
+//		noticeDTO.setNum(81L);
+//		
+//		int result = noticeDAO.setUpdate(noticeDTO);
+//		assertEquals(1, result);
+//	}
+//	
+//	@Test
+//	public void setDelete() throws Exception {
+//		BoardDTO boardDTO = new BoardDTO();
+//		boardDTO.setNum(69L);
+//		int result = noticeDAO.setDelete(boardDTO);
+//		
+//		assertEquals(1, result);
+//	}
 
 }

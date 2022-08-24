@@ -28,7 +28,7 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup" style="padding-right: 150px;">
           <div class="navbar-nav">
             <a class="nav-link active" aria-current="page" href="/">홈</a>
      		<c:choose>
@@ -43,7 +43,7 @@
 		      </c:choose>
             <a class="nav-link active" href="/bankbook/list.do">상품리스트</a>
             <a class="nav-link active" href="/member/search.do">회원검색</a>
-            <a class="nav-link active" href="/notice/list.do">게시판</a>
+            <a class="nav-link active" href="/notice/list.do">공지사항</a>
             <a class="nav-link active" href="/qna/list.do">QNA</a>
           </div>
         </div>

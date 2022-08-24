@@ -19,7 +19,7 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-<div class="container col-lg-8 mt-5">
+<div class="container col-lg-6 mt-5">
 	<div class="mb-3"><h3>통장 추가📝</h3></div>
         <form action="./add.do" method="post">
 		  <div class="form-group">

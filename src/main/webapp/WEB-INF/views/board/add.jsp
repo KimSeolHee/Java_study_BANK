@@ -20,7 +20,7 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <section class="container col-lg-6 mt-5">
-<div class="mt-5 mb-4"><h2>글 작성👩‍💻</h2></div>
+<div class="mt-5 mb-4"><h2>글 작성👩‍💻</h2><h5>${board}</h5></div>
 	
 		<form action="./add.do" method="post">
 			<div class="form-group pt-3 ">

@@ -21,7 +21,7 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 	<section class="container col-lg-6">
-		<div class="mt-5 mb-3"><h2>게시글 수정👩‍🔧‍</h2></div>
+		<div class="mt-5 mb-3"><h2>${board} 수정👩‍🔧‍</h2></div>
 		<form action="./update.do" method="post">
 			<div class="form-group">
 				<input type="hidden" name="num" value="${boardDTO.num}">

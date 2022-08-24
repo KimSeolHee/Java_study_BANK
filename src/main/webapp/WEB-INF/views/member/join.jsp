@@ -20,7 +20,7 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
     <div class="container mt-5 col-lg-5">
-    <div class="mt-5 mb-3"><h2>회원가입</h2></div>
+    <div class="mt-5 mb-3"><h2>회원가입💻</h2></div>
         <form action="join.do" method="post" >
         	<div class="row">
 				  <div class="mb-3 row">
