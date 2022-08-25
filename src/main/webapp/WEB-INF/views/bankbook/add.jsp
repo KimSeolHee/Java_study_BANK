@@ -20,7 +20,7 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <div class="container col-lg-6 mt-5">
-	<div class="mb-3"><h3>통장 추가📝</h3></div>
+	<div class="mb-3"><h2 style="text-align:center;">통장 추가📝</h2></div>
         <form action="./add.do" method="post">
 		  <div class="form-group">
 		    <div><label for="exampleFormControlInput1">통장이름</label></div>
@@ -35,7 +35,7 @@
 		    <textarea name = "bookContents" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 		  </div>
             <div class="mt-3 mb-5">
-              <input class="btn btn-primary mb-3 bg-dark text-white" type="submit" value="통장추가">
+              <input class="btn btn-dark mb-3 text-white" type="submit" value="통장추가">
             </div>
        </form>
   </div>

@@ -21,7 +21,7 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 	<section class="container col-lg-6">
-		<div class="mt-5 mb-3"><h2>${board} 상세보기🔎</h2></div>
+		<div class="mt-5 mb-3"><h2 style="text-align:center;">${board} 상세보기🔎</h2></div>
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
@@ -46,12 +46,15 @@
 			<label for="exampleFormControlTextarea1" class="form-label"><b>내용</b></label>
 			<textarea class="form-control" readonly id="exampleFormControlTextarea1" rows="5">${requestScope.boardDTO.contents}</textarea>
 		</div>
-		<div>
+		<div  style="text-align:right;">
 			<br>
-			<a href="./list.do"><b>글목록📑</b></a>
+			<c:if test="${not empty sessionScope.member}">
+			<a href="reply.do?num=${boardDTO.num}" class="mb-3 btn btn-dark" >답글달기</a>
+			</c:if>
+			<button class="btn btn-dark mb-3 text-white"><a href="./list.do" style="text-decoration:none; color: white;">글목록📑</a></button>
 					<c:if test="${sessionScope.member.id eq requestScope.boardDTO.writer}" >
-					<a href="./update.do?num=${boardDTO.num}"><b>글수정✒</b></a>
-					<a href="./delete.do?num=${boardDTO.num}"><b>글삭제❌</b></a>
+					<button class="btn btn-dark mb-3 text-white"><a href="./update.do?num=${boardDTO.num}" style="text-decoration:none; color: white;">글수정✒</a></button>
+					<button class="btn btn-dark mb-3 text-white"><a href="./delete.do?num=${boardDTO.num}" style="text-decoration:none; color: white;">글삭제❌</a></button>
 					</c:if>
 			</div>
 			<br>

@@ -21,7 +21,7 @@
 <c:import url="../template/header.jsp"></c:import>
 <section class="container col-lg-3">
 		<br>
-		<div class="mt-5 mb-3"><h2>통장 수정👩‍🔧‍</h2></div>
+		<div class="mt-5 mb-3" ><h2 style="text-align:center;">통장 수정👩‍🔧‍</h2></div>
 		<form action="./update.do" method="post">
 			<div class="form-group">
 				<input type="hidden" name="bookNum" value="${dto.bookNum}">
@@ -34,8 +34,8 @@
 				<div><label for="exampleFormControlInput1">이자율</label></div>
 				<input type="number" step="0.01" name = "bookRate"  value="${dto.getBookRate()}" class="form-control mt-1" id="exampleFormControlTextarea1">
 			</div>
-			<div class="mt-3 mb-5">
-              <input class="btn btn-primary mb-3 bg-dark text-white" type="submit" value="수정하기">
+			<div class="mt-3 mb-5" style="text-align:right;">
+              <input class="btn btn-dark mb-3 text-white" type="submit" value="수정하기">
             </div>
 		</form>
 	</section>

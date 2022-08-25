@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +21,21 @@ public class QnaController {
 	
 	@Autowired
 	private QnaService qnaService;
+	
+	@PostMapping("reply.do")
+	public String setReply(QnaDTO qnaDTO, ModelAndView mv) throws Exception {
+		int result = qnaService.setReply(qnaDTO);
+		return "redirect:./list.do";
+	}
+	
+	@GetMapping("reply.do")
+	public ModelAndView setReply(BoardDTO boardDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("boardDTO", boardDTO);
+		mv.setViewName("board/reply");
+		
+		return mv;
+	}
 	
 	//글목록
 	@RequestMapping(value = "list.do", method = RequestMethod.GET)

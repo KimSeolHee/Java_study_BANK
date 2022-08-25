@@ -3,6 +3,8 @@ package com.iu.start.board.qna;
 import java.util.List;
 import java.util.Map;
 
+import javax.print.attribute.standard.PagesPerMinute;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -44,8 +46,16 @@ public class QnaDAO implements BoardDAO{
 	}
 
 	@Override
-	public Long getCount() throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getCount");
+	public Long getCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getCount", pager);
 	}
-
+	
+	public int setReplyAdd(QnaDTO qnaDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setReplyAdd", qnaDTO);
+	}
+	
+	public int setStepUpdate(QnaDTO qnaDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setStepUpdate", qnaDTO);
+	}
+	
 }

@@ -21,7 +21,7 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 	<section class="container mt-5 col-lg-5">
-	<div class="mt-5 mb-3"><h2>로그인🔑</h2></div>
+	<div class="mt-5 mb-3"><h2 >로그인🔑</h2></div>
  	<form action="./login.do" method="post">
 		<div class="row">
 			  <div class="mb-3 row">
@@ -46,12 +46,15 @@
 				  </label>
 				</div>
 			    <div class="col-auto pt-3 mb-3">
-				    <button type="submit" class="btn btn-primary mb-3 bg-dark text-white">로그인</button>
+				    <button type="submit" class="btn btn-dark mb-3 text-white">로그인</button>
 				 </div>
 			  </div>
 		</div>
 	</form>
 	</section>
+	<br>
+	<br>
+	<br>
     <c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

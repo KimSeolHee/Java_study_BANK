@@ -21,7 +21,7 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 	<section class="container col-lg-6">
-		<div class="mt-5 mb-3"><h2>${board} 수정👩‍🔧‍</h2></div>
+		<div class="mt-5 mb-3"><h2 style="text-align:center;">${board} 수정👩‍🔧‍</h2></div>
 		<form action="./update.do" method="post">
 			<div class="form-group">
 				<input type="hidden" name="num" value="${boardDTO.num}">
@@ -34,8 +34,8 @@
 				<div><label for="exampleFormControlInput1">내용</label></div>
 				<textarea name = "contents" class="form-control mt-1" id="exampleFormControlTextarea1" rows="5">${boardDTO.contents}</textarea>
 			</div>
-			<div class="mt-3 mb-3">
-			<input class="btn btn-primary mb-3 bg-dark text-white" type="submit" value="수정하기">
+			<div class="mt-3 mb-3" style="text-align:right;">
+			<input class="btn btn-dark mb-3 text-white" type="submit" value="수정하기">
 			</div>
 		</form>
 	</section>

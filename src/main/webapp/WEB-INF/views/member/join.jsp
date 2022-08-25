@@ -58,7 +58,7 @@
 				      <input type="number" class="form-control"  name = "phone" placeholder="휴대전화입력">
 				   </div>
 				   <div class="col-auto pt-3 mb-3">
-				    <button type="submit" class="btn btn-primary mb-3 bg-dark text-white">가입하기</button>
+				    <button type="submit" class="btn btn-dark mb-3 text-white">가입하기</button>
 				 </div>
 				   
 			  	 </div>

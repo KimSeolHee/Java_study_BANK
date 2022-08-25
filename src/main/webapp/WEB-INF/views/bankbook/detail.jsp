@@ -26,7 +26,7 @@
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container col-lg-6">
 	<br>
-	<div class="mb-2 mt-5"><h2>조회 통장 상세보기📋</h2></div>
+	<div class="mb-2 mt-5"><h2 style="text-align:center;">조회 통장 상세보기📋</h2></div>
 	<table class="table table-hover">
   <thead>
     <tr>
@@ -51,11 +51,11 @@
 			<label for="exampleFormControlTextarea1" class="form-label"><b>상세내용</b></label>
 			<textarea class="form-control" readonly id="exampleFormControlTextarea1" rows="5">${detail.bookContents}</textarea>
 		</div>
-	<div class="mt-4 mb-4">
-	<a href="update.do?bookNum=${detail.bookNum}">수정</a>
-	<a href="delete.do?bookNum=${detail.bookNum}">삭제</a>
+	<div class="mt-4 mb-4" style="text-align:right;">
+		<button class="btn btn-dark mb-3 text-white"><a href="update.do?bookNum=${detail.bookNum}" style="text-decoration:none; color: white;">수정</a></button>
+		<button class="btn btn-dark mb-3 text-white"><a href="delete.do?bookNum=${detail.bookNum}" style="text-decoration:none; color: white;">삭제</a></button>
 	<c:if test ="${not empty sessionScope.member}">
-	<a href="../bankAccount/add.do?bookNum=${detail.bookNum}">가입하기</a>
+	<button class="btn btn-dark mb-3 text-white"><a href="../bankAccount/add.do?bookNum=${detail.bookNum}" style="text-decoration:none; color: white;">가입하기</a></button>
 	</c:if>
 	</div>
 	</div>

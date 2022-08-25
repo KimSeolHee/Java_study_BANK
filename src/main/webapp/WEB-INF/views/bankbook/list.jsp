@@ -30,7 +30,7 @@
 <div class="container col-lg-6">
 	<br>
 	<div class="mb-3 mt-5">	
-	<h2>통장리스트📖</h2>
+	<h2 style="text-align:center;">통장리스트📖</h2>
 </div>
 <table class="table">
   <thead class="thead-dark">
@@ -50,14 +50,15 @@
     </c:forEach>
   </tbody>
 </table>
-	<div class="mb-5 mt-4">
-		<button class="btn btn-primary mb-3 bg-dark text-white"><a href="add.do">상품등록</a></button>
+	<div class="mb-5 mt-4" style="text-align:right;">
+		<button class="btn btn-dark mb-3 text-white"><a href="add.do" style="text-decoration:none; color: white;">상품등록</a></button>
 	</div>
 	</div>
 		<br>
 		<br>
 		<br>
 		<br>
+				<br>
 	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

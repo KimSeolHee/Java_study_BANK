@@ -20,19 +20,19 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-	<div class=" container mt-5 mb-5 col-lg-5"style="padding-left: 120px;">
+	<div class=" container mt-5 mb-5 col-lg-5"style="text-align:center;">
 		<div class="mb-3">
 	<br>
 	<br>
-		<h2>사용자 조회🕵️‍♀️</h2>
+		<div><h2>사용자 조회🕵️‍♀️</h2></div>
 	<br>
 		</div>
 		<form action="search.do" method="post">
-			<div class="input-group  col-lg-8">
+			<div class="input-group  col-lg-8" style="justify-content: center;">
 				  <div id="search-autocomplete" class="form-outline">
-				    <input type="search"  name="id" class="form-control" placeholder="조회할 id입력" style="padding-left: 20px; padding-right: 30px;" />
+				    <input type="search"  name="id" class="form-control" placeholder="조회할 id입력" />
 				  </div>
-			  <button type="submit" class="btn btn-primary bg-dark text-white">
+			  <button type="submit" class="btn btn-dark text-white">
 			    <i class="fas fa-search"></i>
 			  </button>
 		</div>

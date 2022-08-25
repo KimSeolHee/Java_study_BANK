@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ADD</title>
+<title>Reply</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -20,9 +20,10 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <section class="container col-lg-6 mt-5">
-<div class="mt-5 mb-4"><h2 style="text-align:center;">글 작성👩‍💻</h2><h5>${board}</h5></div>
+<div class="mt-5 mb-4"><h2 style="text-align:center;">답글 작성💬</h2><h5>${board}</h5></div>
 	
-		<form action="./add.do" method="post">
+		<form action="reply.do" method="post">
+		<input type="hidden" name="num" value="${boardDTO.num}">
 			<div class="form-group pt-3 ">
 				<div class="mb-1"><label for="exampleFormControlInput1">제목</label></div>
 				<input type="text" name = "title" placeholder="글제목" class="form-control" id="exampleFormControlInput1">
@@ -35,7 +36,7 @@
 				<div ><label  for="exampleFormControlInput1">글내용</label></div>
 				<textarea name = "contents" class="form-control mt-1" id="exampleFormControlTextarea1" rows="5"></textarea>
 			</div>
-			<div class="mt-3 mb-4">
+			<div class="mt-3 mb-4"  style="text-align:right;">
 			<input class="btn btn-dark mb-3 text-white" type="submit" value="작성하기" >
 			</div>
 		</form>
