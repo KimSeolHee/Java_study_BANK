@@ -19,9 +19,9 @@ public class NoticeService implements BoardService {
 	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
-		pager.getRowNum();
 		Long totalCount = noticeDAO.getCount();
 		pager.getNum(totalCount);
+		pager.getRowNum();
 		//page				startRow				lastRow
 		//1					1							15
 		//2					16							30

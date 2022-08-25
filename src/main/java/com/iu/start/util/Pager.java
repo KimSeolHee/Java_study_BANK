@@ -16,6 +16,11 @@ public class Pager {
 	private Long perPage;
 	private Long perBlock;
 	
+	//이전블록의 유무-이전블럭이 있으면 true,없으면 false
+	private boolean pre;
+	//다음블록의 유무-다음블럭이 있으면 true,없으면 false
+	private boolean next;
+	
 	public Pager() {
 		// TODO Auto-generated constructor stub
 		this.perPage=10L;
@@ -39,10 +44,27 @@ public class Pager {
 		// curBlock으로 startNum, lastNum 계산
 		this.startNum = (curBlock*this.getPerBlock()) - 4;
 		this.lastNum = curBlock*this.getPerBlock();
+		
+		//totalPage보다 page가 더 클경우
+		if(this.getPage() > totalPage) {
+			this.setPage(totalPage);
+		}
+		//현재블록이 마지막 블록일때(totalBlock과 같을때)
+		if(curBlock == totalBlock) {
+			this.lastNum = totalPage;
+		}
+		//이전, 다음 블럭의 유무
+		if(curBlock > 1) {
+			pre = true;
+		}
+		
+		if(curBlock < totalBlock) {
+			next = true;
+		}
 	}
 	
 	public Long getPage() {
-		if(this.page == null) {
+		if(this.page == null || this.page < 1) {
 			this.page=1L;
 		}
 		return page;
@@ -95,4 +117,22 @@ public class Pager {
 	public void setPerBlock(Long perBlock) {
 		this.perBlock = perBlock;
 	}
+
+	public boolean isPre() {
+		return pre;
+	}
+
+	public void setPre(boolean pre) {
+		this.pre = pre;
+	}
+
+	public boolean isNext() {
+		return next;
+	}
+
+	public void setNext(boolean next) {
+		this.next = next;
+	}
+	
+	
 }
