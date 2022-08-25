@@ -29,9 +29,7 @@
 				<input type="text" name = "title" placeholder="글제목" class="form-control" id="exampleFormControlInput1">
 			</div>             
             <div class="form-group pt-3 ">
-				<div class="mb-1"><label for="exampleFormControlInput1">작성자</label></div>
-				    	<input type="text"  name = "writer" readonly value="${member.id}" class="form-control" id="exampleFormControlInput1">
-			</div>
+				    	<input type="hidden"  name = "writer" readonly value="${member.id}" class="form-control" id="exampleFormControlInput1">
 			<div class="mt-1">
 				<div ><label  for="exampleFormControlInput1">글내용</label></div>
 				<textarea name = "contents" class="form-control mt-1" id="exampleFormControlTextarea1" rows="5"></textarea>
