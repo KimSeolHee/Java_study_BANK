@@ -20,7 +20,6 @@ public class QnaService implements BoardService{
 	public int setReply(QnaDTO qnaDTO) throws Exception{
 		BoardDTO boardDTO = qnaDAO.getDetail(qnaDTO);
 		QnaDTO parent = (QnaDTO)boardDTO;
-		System.out.println(parent.getRef());
 		qnaDTO.setRef(parent.getRef());
 		qnaDTO.setStep(parent.getStep()+1);
 		qnaDTO.setDepth(parent.getDepth()+1);
