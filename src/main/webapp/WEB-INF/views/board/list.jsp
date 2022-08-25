@@ -40,7 +40,7 @@
 				</c:forEach>
 			</tbody>
 		</table>	
-			<nav aria-label="Page navigation example"">
+			<nav aria-label="Page navigation example">
   <ul class="pagination" style="justify-content: center;">
     <li class="page-item">
     <c:if test="${pager.startNum != 1}">
