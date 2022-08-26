@@ -18,6 +18,10 @@ public class BankMembersDAO implements MembersDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.iu.start.member.BankMembersDAO.";
 	
+	public BankMembersDTO getMyPage(BankMembersDTO bankMembersDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getMyPage", bankMembersDTO);
+	}
+	
 	public BankMembersDTO getLogin(BankMembersDTO dto) throws Exception{
 		
 		return sqlSession.selectOne(NAMESPACE+"getLogin", dto);	

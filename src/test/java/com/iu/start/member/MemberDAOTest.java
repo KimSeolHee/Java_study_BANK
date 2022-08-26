@@ -1,6 +1,7 @@
 package com.iu.start.member;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
@@ -22,6 +23,16 @@ public class MemberDAOTest extends MyAbstractTest{
 		List<BankMembersDTO> ar= bankMembersDAO.getSearchById(search);
 		
 		assertEquals(1, ar.size());
+	}
+	
+	@Test
+	public void getMyPage() throws Exception{
+		BankMembersDTO bankMembersDTO = new BankMembersDTO();
+		bankMembersDTO.setId("tttt");
+		
+		bankMembersDTO = bankMembersDAO.getMyPage(bankMembersDTO);
+		System.out.println(bankMembersDTO.getEmail());
+		assertNotNull(bankMembersDTO);
 	}
 	
 	

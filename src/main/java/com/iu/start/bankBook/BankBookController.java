@@ -1,6 +1,8 @@
 package com.iu.start.bankBook;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,14 +23,11 @@ public class BankBookController {
 	@Autowired
 	private BankBookService bankBookService;
 	
-	@RequestMapping(value = "list.do", method = RequestMethod.GET)
-	public void list(HttpServletRequest re) throws Exception {
-		System.out.println("list 실행");
-		ArrayList<BankBookDTO> ar = bankBookService.getList();
-		re.setAttribute("list", ar);
+	@RequestMapping(value = "list", method = RequestMethod.GET)
+	public void list(HttpServletRequest re) throws Exception{
+		List<BankBookDTO> ar= bankBookService.getList();
 		
-//		return "bankbook/list"; 
-// requestMapping주소와 return view주소와 같으면 return 생략가능!
+		re.setAttribute("list", ar);
 	}
 	
 	@RequestMapping(value = "detail.do", method = RequestMethod.GET)
@@ -48,26 +47,6 @@ public class BankBookController {
 		return mv;
 	}
 
-// 2번째 방법
-//	@RequestMapping(value = "detail", method = RequestMethod.GET)
-//	public String detail(HttpServletRequest re) throws Exception {
-//		System.out.println("detail 실행");
-//		
-//		Long bookNum = Long.parseLong(re.getParameter("bookNum"));
-//		
-//		System.out.println("booknum: "+ bookNum);
-//		
-//		BankBookDTO dto = new BankBookDTO();
-//		dto.setBookNum(bookNum);
-//		
-//		dto = dao.getDetail(dto);
-//		
-//		re.setAttribute("detail", dto);
-//		
-//		return "bankbook/detail";
-//	}
-	
-	// /bankbook/add , /WEB-INF/views/bankbook/add.jsp
 	@RequestMapping(value = "add.do", method = RequestMethod.GET)
 	public String add() {
 		System.out.println("add 실행");
@@ -77,9 +56,11 @@ public class BankBookController {
 	
 	@RequestMapping(value = "add.do", method = RequestMethod.POST)
 	public ModelAndView add(BankBookDTO dto) throws Exception {
-		System.out.println("add 실행 - post");
 
 		ModelAndView mv = new ModelAndView();
+		Calendar ca = Calendar.getInstance();
+		dto.setBookNum(ca.getTimeInMillis());
+		
 		int result = bankBookService.setBankBook(dto);
 		
 		if(result  != 0) {

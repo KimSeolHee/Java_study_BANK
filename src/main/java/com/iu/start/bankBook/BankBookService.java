@@ -1,6 +1,6 @@
 package com.iu.start.bankBook;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ public class BankBookService {
 	@Autowired
 	private BankBookDAO bankBookDAO;
 	
-	public int setUpdate(BankBookDTO bookDTO) throws Exception{
+	public int setUpdate(BankBookDTO bookDTO) throws Exception {
 		return bankBookDAO.setUpdate(bookDTO);
 	}
 	
@@ -19,7 +19,7 @@ public class BankBookService {
 		return bankBookDAO.setBankBook(BookDTO);
 	}
 	
-	public ArrayList<BankBookDTO> getList() throws Exception{
+	public List<BankBookDTO> getList() throws Exception{
 		return bankBookDAO.getList();
 	}
 	
@@ -31,7 +31,9 @@ public class BankBookService {
 		return bankBookDAO.getDetail(bookDTO);
 	}
 	
-	public int setDelete(BankBookDTO dto) throws Exception{
-		return bankBookDAO.setDelete(dto);
+	public int setDelete(BankBookDTO bookDTO) throws Exception{
+		return bankBookDAO.setDelete(bookDTO);
 	}
+	
+
 }

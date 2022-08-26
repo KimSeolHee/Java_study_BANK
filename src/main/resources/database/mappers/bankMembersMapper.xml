@@ -4,6 +4,33 @@
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 		    
 		    <mapper namespace="com.iu.start.member.BankMembersDAO">
+		    
+		    	<select id="getMyPage" parameterType="BankMembersDTO" resultMap="getMyPageResult">
+			    		SELECT BM.ID, BM.NAME, BM.EMAIL, BM.PHONE, BA.accountnum, BB.BOOKNAME, BA.ACCOUNTDATE
+							FROM bankmembers BM
+						    INNER JOIN
+						    BANKACCOUNT BA
+						    on bm.id = ba.userid
+						    inner join
+						    bankbook bb
+						    using (booknum)
+						where id=#{id}
+		    	</select>
+		    	
+		    	<resultMap type="BankMembersDTO" id="getMyPageResult">
+		    		<id column="ID" property="id"/>
+		    		<result column="NAME" property="name"/>
+		    		<result column="EMAIL" property="email"/>
+		    		<result column="PHONE" property="phone"/>
+		    		<collection property="bankAccountDTOs" javaType="List" ofType="BankAccountDTO">
+		    			<id column="ACCOUNTNUM" property="accountNum"/>
+		    			<result column="ACCOUNTDATE" property="accountDate"/>
+		    			<association property="bankBookDTO" javaType="bankBookDTO">
+		    				<result column="BOOKNAME" property="bookName"/>
+		    			</association>
+		    		</collection>
+		    	</resultMap>
+		    
 		    	<select id="getLogin" parameterType="BankMembersDTO" resultType="BankMembersDTO">
 		    		SELECT ID, NAME FROM BANKMEMBERS WHERE ID=#{id} AND PW=#{pw}
 		    	</select>
