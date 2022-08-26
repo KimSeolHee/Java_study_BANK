@@ -21,7 +21,7 @@
 <c:import url="../template/header.jsp"></c:import>
     <div class="container mt-5 col-lg-5">
     <div class="mt-5 mb-3"><h2>회원가입💻</h2></div>
-        <form action="join.do" method="post" >
+        <form action="join.do" method="post" enctype="multipart/form-data" >
         	<div class="row">
 				  <div class="mb-3 row">
 				    <div>
@@ -51,6 +51,14 @@
 					  <input type="text" name="email" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
 					  <span class="input-group-text" id="basic-addon2">@example.com</span>
 					</div>
+					
+					<div>
+				    <label for="files" class="col-sm-2 col-form-label">Photo</label>
+				   </div>
+				   <div class="input-group mb-3">
+					  <input type="file" name="photo" class="form-control">
+					</div>
+						
 					 <div>
 				    <label for="phone" class="col-sm-2 col-form-label">Phone</label>
 				   </div>

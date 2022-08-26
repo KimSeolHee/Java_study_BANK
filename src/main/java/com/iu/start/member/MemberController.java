@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContext;
 
@@ -168,17 +169,15 @@ public class MemberController {
 	
 // 3번째 방법	
 	@RequestMapping(value = "join.do", method = RequestMethod.POST)
-	public String join(BankMembersDTO BankMembersDTO) throws Exception {
+	public String join(BankMembersDTO BankMembersDTO, MultipartFile photo) throws Exception {
 		System.out.println("회원가입 Post 실행");
+		System.out.println(photo);
+		System.out.println("upload 파일명 : "+photo.getOriginalFilename());
+		System.out.println("upload 파라미터명 : "+ photo.getName());
+		System.out.println("upload 파일의 크기 : "+photo.getSize());
 		
-		int result = bankMembersService.setJoin(BankMembersDTO);
+		int result = bankMembersService.setJoin(BankMembersDTO, photo);
 		
-		if(result != 0) {
-			System.out.println("성공");
-		}else {
-			System.out.println("실패");
-		}
-	
 		return "redirect: ../";
 	}
 

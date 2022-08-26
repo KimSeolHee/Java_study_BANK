@@ -4,17 +4,24 @@
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 		    
 		    <mapper namespace="com.iu.start.member.BankMembersDAO">
+		    	<insert id="setAddFile" parameterType="MembersFileDTO">
+		    		insert into memberfile values (FILE_SEQ.NEXTVAL,#{id},#{fileName},#{oriName})
+		    	</insert>
 		    
 		    	<select id="getMyPage" parameterType="BankMembersDTO" resultMap="getMyPageResult">
-			    		SELECT BM.ID, BM.NAME, BM.EMAIL, BM.PHONE, BA.accountnum, BB.BOOKNAME, BA.ACCOUNTDATE
-							FROM bankmembers BM
-						    INNER JOIN
-						    BANKACCOUNT BA
-						    on bm.id = ba.userid
-						    inner join
-						    bankbook bb
-						    using (booknum)
-						where id=#{id}
+						SELECT BM.ID, BM.NAME, BM.EMAIL, BM.PHONE, MF.fileNum, MF.filename, BA.accountnum, BB.BOOKNAME, BA.ACCOUNTDATE FROM bankmembers BM
+						left join
+						memberfile MF
+						on BM.id = MF.id
+						
+						left JOIN
+						BANKACCOUNT BA
+						on BM.id = BA.userid
+						
+						left join
+						bankbook BB
+						on BA.booknum=BB.booknum
+						where BM.id = #{id}
 		    	</select>
 		    	
 		    	<resultMap type="BankMembersDTO" id="getMyPageResult">
@@ -22,6 +29,10 @@
 		    		<result column="NAME" property="name"/>
 		    		<result column="EMAIL" property="email"/>
 		    		<result column="PHONE" property="phone"/>
+		    		<association property="membersFileDTO" javaType="MembersfileDTO">
+		    			<id column="FILENUM" property="fileNum"/>
+		    			<result column="FILENAME" property="fileName"/>
+		    		</association>
 		    		<collection property="bankAccountDTOs" javaType="List" ofType="BankAccountDTO">
 		    			<id column="ACCOUNTNUM" property="accountNum"/>
 		    			<result column="ACCOUNTDATE" property="accountDate"/>

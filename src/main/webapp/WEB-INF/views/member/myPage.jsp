@@ -20,12 +20,12 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-<section class="container col-lg-6">
-<div class="mt-5 mb-3"><h2>myPage🥰</h2></div>
+<section class="container col-lg-6" style="text-align:center;">
+<div class="mt-5 mb-3"><h2><b>마이페이지🥰</b></h2></div>
 <table class="table table-striped table-hover">
 		<thead>
 			<tr>
-				<th>Id</th><th>NAME</th><th>EMAIL</th><th>PHONE</th>
+				<th>아이디</th><th>이름</th><th>이메일</th><th>전화번호</th>
 			</tr>
 		</thead>
 	<tbody>
@@ -40,7 +40,7 @@
 	<table class="table table-striped table-hover">
 	<thead>
 			<tr>
-				<th>accountNum</th><th>bookName</th><th>accountDate</th>
+				<th>통장번호</th><th>통장명</th><th>가입일</th>
 			</tr>
 	</thead>
 	<c:forEach items="${dto.bankAccountDTOs}" var="dto">
@@ -70,7 +70,11 @@
 	</c:forEach> --%>
 	
 	</table>
+	<div class="card" style="width: 18rem; margin-left:auto;">
+	  <img src="../resources/upload/member/${dto.membersFileDTO.fileName}" class="card-img-top" alt="...">
+	</div>
 	</section>
+	<br>
 	<br>
 	<c:import url="../template/footer.jsp"></c:import>
 </body>

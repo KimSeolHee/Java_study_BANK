@@ -16,5 +16,6 @@
 		<typeAlias type="com.iu.start.board.qna.QnaDTO" alias="QnaDTO"/>
 		<typeAlias type="java.lang.Long" alias="Long" />
 		<typeAlias type="com.iu.start.util.Pager" alias="Pager"/>
+		<typeAlias type="com.iu.start.member.MembersFileDTO" alias="MembersFileDTO"/>
 	</typeAliases>
 </configuration>

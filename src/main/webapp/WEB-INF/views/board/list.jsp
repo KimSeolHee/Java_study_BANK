@@ -55,7 +55,7 @@
 						<td>${pageScope.BoardDTO.num}</td>
 						<td>
 						<c:catch>
-						<c:forEach begin="1" end="${BoardDTO.depth}"><b></b></c:forEach>
+						<c:forEach begin="1" end="${BoardDTO.depth}"><b>--</b></c:forEach>
 						</c:catch>
 						<a href="./detail.do?num=${BoardDTO.getNum()}">${pageScope.BoardDTO.title}</a></td>
 						<td>${pageScope.BoardDTO.writer}</td>

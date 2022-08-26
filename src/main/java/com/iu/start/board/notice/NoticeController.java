@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.start.board.impl.BoardDTO;
@@ -55,8 +56,11 @@ public class NoticeController {
 		return "board/add";
 	}
 	@RequestMapping(value = "add.do", method = RequestMethod.POST)
-	public ModelAndView setAdd(BoardDTO boardDTO) throws Exception{
-		int result = noticeService.setAdd(boardDTO);
+	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile[] files) throws Exception{
+		System.out.println(files);
+		System.out.println("upload 파일명 : "+files.length);
+		
+		int result = noticeService.setAdd(boardDTO,files);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:./list.do");
 		return mv;

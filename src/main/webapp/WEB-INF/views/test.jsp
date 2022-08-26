@@ -29,7 +29,7 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="2000">
-            <img src="/resources/images/1.jpg" class="d-block w-100" alt="...">
+            <img src="/resources/images/.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
