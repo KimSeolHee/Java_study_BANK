@@ -31,10 +31,6 @@ public class NoticeController {
 	@RequestMapping(value = "list.do", method = RequestMethod.GET)
 	public ModelAndView getList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(pager.getPage());
-//		System.out.println("Page="+page);
-		System.out.println(pager.getKind());
-		System.out.println(pager.getSearch());
 		
 		List<BoardDTO> ar = noticeService.getList(pager);
 		mv.addObject("pager", pager);
@@ -57,9 +53,6 @@ public class NoticeController {
 	}
 	@RequestMapping(value = "add.do", method = RequestMethod.POST)
 	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile[] files) throws Exception{
-		System.out.println(files);
-		System.out.println("upload 파일명 : "+files.length);
-		
 		int result = noticeService.setAdd(boardDTO,files);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:./list.do");

@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.iu.start.board.impl.BoardDAO;
 import com.iu.start.board.impl.BoardDTO;
+import com.iu.start.board.impl.BoardFileDTO;
 import com.iu.start.board.impl.BoardService;
 import com.iu.start.util.Pager;
 
@@ -76,11 +78,6 @@ public class NoticeService implements BoardService {
 	}
 
 	@Override
-	public int setAdd(BoardDTO boardDTO) throws Exception {
-		return noticeDAO.setAdd(boardDTO);
-	}
-
-	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		return noticeDAO.setUpdate(boardDTO);
 	}
@@ -89,7 +86,10 @@ public class NoticeService implements BoardService {
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		return noticeDAO.setDelete(boardDTO);
 	}
+	
+	@Override
 	public int setAdd(BoardDTO boardDTO, MultipartFile[] files) throws Exception {
+		int result = noticeDAO.setAdd(boardDTO, files);
 		//1. 실제 경로
 		String realPath = servletContext.getRealPath("resources/upload/notice");
 		System.out.println(realPath);
@@ -113,9 +113,17 @@ public class NoticeService implements BoardService {
 			
 			mf.transferTo(file);
 			
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriName(mf.getOriginalFilename());
+			System.out.println(boardFileDTO.getOriName());
+			boardFileDTO.setNum(218L);//XXXX
+			
+			int count = noticeDAO.setAddFile(boardFileDTO);
+			System.out.println("들어갔으려나?? : " + count);
+			
 		}
 		
-//		return noticeDAO.setAdd(boardDTO);
-		return 0;
+		return result;
 	}
 }

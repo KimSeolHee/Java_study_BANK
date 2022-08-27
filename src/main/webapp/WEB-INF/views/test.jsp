@@ -29,17 +29,17 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="2000">
-            <img src="/resources/images/.jpg" class="d-block w-100" alt="...">
+            <img src="/resources/images/4.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
           <div class="carousel-item" data-bs-interval="2000">
-            <img src="/resources/images/2.jpg" class="d-block w-100" alt="...">
+            <img src="/resources/images/5.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
           <div class="carousel-item" data-bs-interval="2000">
-            <img src="/resources/images/3.jpg" class="d-block w-100" alt="...">
+            <img src="/resources/images/6.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>

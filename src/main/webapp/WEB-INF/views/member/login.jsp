@@ -29,7 +29,7 @@
 			    <label for="staticEmail" class="col-sm-2 col-form-label">id</label>
 			    </div>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" name = "id" placeholder="아이디">
+			      <input type="text" class="form-control" name = "id" placeholder="아이디" value="tttt">
 			    </div>
 			  </div>
 			  <div class="mb-3 row">
@@ -37,7 +37,7 @@
 			    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
 			    </div>
 			    <div class="col-sm-10">
-			      <input type="password" class="form-control"  name = "pw" placeholder="패스워드">
+			      <input type="password" class="form-control"  name = "pw" placeholder="패스워드" value="tttt">
 			    </div>
 			    <div class="form-check pt-3 ">
 				  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
