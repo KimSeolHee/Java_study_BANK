@@ -3,11 +3,11 @@ package com.iu.start.board;
 import java.sql.Clob;
 import java.sql.Date;
 
-public class BoardDTO {
+public class NoticeDTO {
 	
 	private Long num;
 	private String title;
-	private Clob contents;
+	private String contents;
 	private String writer;
 	private Date regDate;
 	private Integer hit;
@@ -24,10 +24,10 @@ public class BoardDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Clob getContents() {
+	public String getContents() {
 		return contents;
 	}
-	public void setContents(Clob contents) {
+	public void setContents(String contents) {
 		this.contents = contents;
 	}
 	public String getWriter() {

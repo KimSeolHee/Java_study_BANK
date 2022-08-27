@@ -44,6 +44,37 @@
 	  </c:forEach>
 	</tbody>
 	</table>
+	
+	<nav aria-label="Page navigation example">
+  <ul class="pagination" style="justify-content: center;">
+    <li class="page-item">
+    <c:if test="${pager.firstBlockNum != 1}">
+      <a class="page-link" href="./list.do?page=${pager.firstBlockNum-1}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+      </c:if>
+    </li>
+    <c:forEach begin="${pager.firstBlockNum}" end="${pager.lastBlockNum}" var="i">
+    	<li class="page-item"><a class="page-link" href="./list.do?page=${pageScope.i}">${pageScope.i}</a></li>
+    </c:forEach>
+<%--  <c:choose>
+ <c:when test="${pager.next}">
+    <li class="page-item">
+ </c:when>
+ <c:otherwise>
+     <li class="page-item disabled">
+ </c:otherwise>
+     </c:choose> --%>
+    <li class=" page-item ${pager.next? '' : 'disabled'}">
+      <a class="page-link" href="./list.do?page=${pager.lastBlockNum+1}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a> 
+    </li>
+  </ul>
+</nav>
+	
+	
+	
 
 	<div class="mt-3 mb-5">
 	<c:if test="${not empty sessionScope.member}">

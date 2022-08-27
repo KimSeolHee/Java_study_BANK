@@ -1,11 +1,14 @@
 package com.iu.start.board;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,26 +19,31 @@ import com.iu.start.member.BankMembersDTO;
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
-	BoardDAO boardDAO = new BoardDAO();
+	
+	@Autowired
+	private BoardService boardService;
+	
 	@RequestMapping(value = "list.do",  method = RequestMethod.GET)
-	public String list(HttpServletRequest re) throws Exception {
-		System.out.println("list-GET확인");
+	public String list(Pager pager, Model model) throws Exception {
+		System.out.println("controller : "+ pager.getPageStartNum());
+		System.out.println("controller : "+ pager.getPageLastNum());
+		List<NoticeDTO> ar = boardService.getList(pager);
 		
-		ArrayList<BoardDTO> ar = boardDAO.getList();
-		re.setAttribute("list", ar);
+		model.addAttribute("pager", pager);
+		model.addAttribute("list", ar);
 		
 		return "./board/list";
 		//value 주소와 같으면 생략가능
 	}
 	
 	@RequestMapping("detail.do")
-	public ModelAndView detail(Long num) throws Exception {
+	public ModelAndView detail(Long num,Pager pager) throws Exception {
 		System.out.println("detail-GET확인");
 		ModelAndView mv = new ModelAndView();
-		BoardDTO boardDTO = new BoardDTO();
+		NoticeDTO boardDTO = new NoticeDTO();
 		
 		boardDTO.setNum(num);
-		boardDTO = boardDAO.getDetail(boardDTO);
+		boardDTO = boardService.getDetail(boardDTO);
 		mv.addObject("detail", boardDTO);
 		mv.setViewName("/board/detail");
 		
@@ -43,9 +51,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "update.do", method = RequestMethod.GET)
-	public ModelAndView update(BoardDTO boardDTO, ModelAndView mv) throws Exception {
+	public ModelAndView update(NoticeDTO boardDTO, ModelAndView mv) throws Exception {
 		System.out.println("update - get");
-		boardDTO = boardDAO.getDetail(boardDTO);
+		boardDTO = boardService.getDetail(boardDTO);
 		
 		mv.setViewName("board/update");
 		mv.addObject("boardDTO", boardDTO);
@@ -54,11 +62,11 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "update.do", method = RequestMethod.POST)
-	public String update(BoardDTO boardDTO) throws Exception {
+	public String update(NoticeDTO boardDTO) throws Exception {
 		System.out.println("update - post");
 		
 		boardDTO.setNum(boardDTO.getNum());
-		int result = boardDAO.setUpdate(boardDTO);
+		int result = boardService.setUpdate(boardDTO);
 		
 		System.out.println(result);
 		
@@ -72,10 +80,10 @@ public class BoardController {
 	@RequestMapping(value = "delete.do", method = RequestMethod.GET)
 	public ModelAndView delete(Long num) throws Exception {
 		System.out.println("delete 실행확인");
-		BoardDTO boardDTO = new BoardDTO();
+		NoticeDTO boardDTO = new NoticeDTO();
 		boardDTO.setNum(num);
 		System.out.println(boardDTO.getNum());
-		boardDAO.setDelite(boardDTO);
+		boardService.setDelite(boardDTO);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect: list.do");
 		
@@ -86,7 +94,7 @@ public class BoardController {
 	public ModelAndView add() throws Exception {
 		System.out.println("add-get 실행");
 		
-		BoardDTO boardDTO = new BoardDTO();
+		NoticeDTO boardDTO = new NoticeDTO();
 		ModelAndView mv = new ModelAndView();
 		
 		mv.addObject("add", boardDTO);
@@ -96,9 +104,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "add.do", method = RequestMethod.POST)
-	public String add(HttpSession session, BoardDTO boardDTO) throws Exception {
+	public String add(HttpSession session, NoticeDTO boardDTO) throws Exception {
 		System.out.println("add-post");
-		boardDAO.setAdd(boardDTO);
+		boardService.setAdd(boardDTO);
 		
 		session.setAttribute("add", boardDTO);
 		return "redirect: list.do";

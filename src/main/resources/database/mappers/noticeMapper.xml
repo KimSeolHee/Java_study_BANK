@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+		<!DOCTYPE mapper
+		    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		    
+		     <mapper namespace="com.iu.start.board.BoardDAO">
+		     <select id="getCount" resultType="Long" parameterType="Pager">
+		     		select count(num) from notice 
+		     	</select>
+		     	<select id="getList" parameterType="Pager" resultType="NoticeDTO">
+		     		select * from 
+						(select rownum R, N.* from 
+						(select * from notice order by num desc) N)
+						where R between #{pageStartNum} and #{pageLastNum}
+		     	</select>
+		     	<select id="getDetail" parameterType="NoticeDTO" resultType="NoticeDTO">
+		     		SELECT * FROM notice WHERE num=#{num}
+		     	</select>
+		     	<update id="setUpdate">
+		     		UPDATE notice SET title = #{tilte}, CONTENTs=#{contents} WHERE NUM=#{num}
+		     	</update>
+		     	<delete id="setDelite" parameterType="NoticeDTO">
+		     		delete notice where num=#{num}
+		     	</delete>
+		     	<insert id="setAdd" parameterType="NoticeDTO">
+		     		INSERT INTO notice VALUES (BOARD_SEQ.NEXTVAL, #{title},#{contents}, #{writer}, SYSDATE, 0)
+		     	</insert>
+		     	
+		     </mapper>
