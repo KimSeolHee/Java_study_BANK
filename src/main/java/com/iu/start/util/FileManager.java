@@ -20,11 +20,11 @@ public class FileManager {
 	public String saveFile(String path, MultipartFile multipartFile, ServletContext servletContext) throws Exception{
 		//경로가 다 다르므로 매개변수로 받는 방법
 		//1. 실제 경로
-		String realPath = servletContext.getContextPath();
-		System.out.println(realPath);
+		String realPath = servletContext.getRealPath(path);
+		System.out.println("realPath:"+realPath);
 		
 		//2. 폴더(directory) 체크
-		File file = new File(path);
+		File file = new File(realPath);
 		if(!file.exists()) {
 			file.mkdirs();
 		}

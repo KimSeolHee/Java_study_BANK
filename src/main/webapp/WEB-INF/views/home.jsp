@@ -41,5 +41,8 @@
 	<a href = "./board/list.do"><b>게시판🚶‍♀️‍🏃‍♂️🤸</b></a>
 </div>
 
+<script>
+	alert("Hello");
+</script>
 </body>
 </html>

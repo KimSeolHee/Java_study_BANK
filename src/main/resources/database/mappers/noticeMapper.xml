@@ -48,12 +48,14 @@
 		     			<result column="ORINAME" property="oriName"/>
 		     		</collection>
 		     	</resultMap>
+		     	
 		     	<insert id="setAdd" parameterType="BoardDTO">
 			     	<selectKey order="BEFORE" keyProperty="num" resultType="Long">
 			     		SELECT BOARD_SEQ.NEXTVAL FROM DUAL
 			     	</selectKey>
 		     		insert into notice values(#{num}, #{title}, #{writer}, #{contents}, sysdate, 0)
 		     	</insert>
+		     	
 		     	<update id="setUpdate" parameterType="BoardDTO">
 		     		UPDATE notice SET title = #{title}, contents=#{contents}  WHERE NUM = #{num}
 		     	</update>
