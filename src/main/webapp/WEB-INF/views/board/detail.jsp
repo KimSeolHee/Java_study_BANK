@@ -46,6 +46,14 @@
 			<label for="exampleFormControlTextarea1" class="form-label"><b>내용</b></label>
 			<textarea class="form-control" readonly id="exampleFormControlTextarea1" rows="5">${requestScope.boardDTO.contents}</textarea>
 		</div>
+		
+		<div><h5>파일</h5>
+		<c:forEach items="${boardDTO.boardFileDTOs}" var="fileDTO">
+			<p><a href="../resources/upload/${board}/${fileDTO.fileName}">${fileDTO.oriName}</a></p>
+		</c:forEach>
+		</div>
+		
+		
 		<div  style="text-align:right;">
 			<br>
 			<c:if test="${not empty sessionScope.member}">

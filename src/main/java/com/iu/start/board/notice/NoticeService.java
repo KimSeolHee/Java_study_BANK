@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import com.iu.start.board.impl.BoardDAO;
 import com.iu.start.board.impl.BoardDTO;
 import com.iu.start.board.impl.BoardFileDTO;
 import com.iu.start.board.impl.BoardService;
+import com.iu.start.util.FileManager;
 import com.iu.start.util.Pager;
 
 @Service
@@ -26,6 +28,9 @@ public class NoticeService implements BoardService {
 	
 	@Autowired
 	private ServletContext servletContext;
+
+	@Autowired
+	private FileManager fileManager;
 	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
@@ -88,41 +93,25 @@ public class NoticeService implements BoardService {
 	}
 	
 	@Override
-	public int setAdd(BoardDTO boardDTO, MultipartFile[] files) throws Exception {
+	public int setAdd(BoardDTO boardDTO, MultipartFile[] files, ServletContext servletContext) throws Exception {
 		int result = noticeDAO.setAdd(boardDTO, files);
-		//1. 실제 경로
-		String realPath = servletContext.getRealPath("resources/upload/notice");
-		System.out.println(realPath);
+		String path ="resources/upload/notice";
 		
-		//2.폴더확인
-		File file = new File(realPath);
-		if(!file.exists()) {
-			file.mkdirs();
-		}
-		
-		//3. 저장할 파일명을 만드는 데 중복되지 않게 만들기
-		for(MultipartFile mf:files) {
-			//파일 비어있으면 올리기
-			if(mf.isEmpty()) {
+		for(MultipartFile multipartFile : files) {
+			if(multipartFile.isEmpty()) {
 				continue;
 			}
-			//저장하는 코드
-			String fileName = UUID.randomUUID().toString();
-			fileName = fileName+"_"+mf.getOriginalFilename();
-			File dest = new File(file, fileName);
-			
-			mf.transferTo(dest);
+			String fileName = fileManager.saveFile(path, multipartFile, servletContext);
 			
 			BoardFileDTO boardFileDTO = new BoardFileDTO();
 			boardFileDTO.setFileName(fileName);
-			boardFileDTO.setOriName(mf.getOriginalFilename());
+			boardFileDTO.setOriName(multipartFile.getOriginalFilename());
 			boardFileDTO.setNum(boardDTO.getNum());
 			
-			int count = noticeDAO.setAddFile(boardFileDTO);
-			System.out.println("들어갔으려나?? : " + count);
+			noticeDAO.setAddFile(boardFileDTO);
 			
 		}
-		
+
 		return result;
 	}
 }

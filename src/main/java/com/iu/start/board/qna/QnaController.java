@@ -62,7 +62,7 @@ public class QnaController {
 	//글작성
 	@RequestMapping(value = "add.do", method = RequestMethod.GET)
 	public String setAdd(Model model) throws Exception{
-		model.addAttribute("board", "QNA");
+		model.addAttribute("board", "qna");
 		return "board/add";
 	}
 	@RequestMapping(value = "add.do", method = RequestMethod.POST)

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.print.attribute.standard.RequestingUserName;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -169,14 +170,14 @@ public class MemberController {
 	
 // 3번째 방법	
 	@RequestMapping(value = "join.do", method = RequestMethod.POST)
-	public String join(BankMembersDTO BankMembersDTO, MultipartFile photo) throws Exception {
+	public String join(BankMembersDTO BankMembersDTO, MultipartFile photo, HttpSession session) throws Exception {
 		System.out.println("회원가입 Post 실행");
 		System.out.println(photo);
 		System.out.println("upload 파일명 : "+photo.getOriginalFilename());
 		System.out.println("upload 파라미터명 : "+ photo.getName());
 		System.out.println("upload 파일의 크기 : "+photo.getSize());
 		
-		int result = bankMembersService.setJoin(BankMembersDTO, photo);
+		int result = bankMembersService.setJoin(BankMembersDTO, photo, session);
 		
 		return "redirect: ../";
 	}
