@@ -94,7 +94,7 @@ public class NoticeService implements BoardService {
 	
 	@Override
 	public int setAdd(BoardDTO boardDTO, MultipartFile[] files, ServletContext servletContext) throws Exception {
-		System.out.println("files"+files);
+		
 		int result = noticeDAO.setAdd(boardDTO, files);
 		String path ="resources/upload/notice";
 		
@@ -103,7 +103,6 @@ public class NoticeService implements BoardService {
 				continue;
 			}
 			String fileName = fileManager.saveFile(path, multipartFile, servletContext);
-			System.out.println(fileName);
 			BoardFileDTO boardFileDTO = new BoardFileDTO();
 			boardFileDTO.setFileName(fileName);
 			boardFileDTO.setOriName(multipartFile.getOriginalFilename());
