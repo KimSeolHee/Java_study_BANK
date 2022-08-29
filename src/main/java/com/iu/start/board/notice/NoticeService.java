@@ -109,15 +109,14 @@ public class NoticeService implements BoardService {
 			//저장하는 코드
 			String fileName = UUID.randomUUID().toString();
 			fileName = fileName+"_"+mf.getOriginalFilename();
-			file = new File(file, fileName);
+			File dest = new File(file, fileName);
 			
-			mf.transferTo(file);
+			mf.transferTo(dest);
 			
 			BoardFileDTO boardFileDTO = new BoardFileDTO();
 			boardFileDTO.setFileName(fileName);
 			boardFileDTO.setOriName(mf.getOriginalFilename());
-			System.out.println(boardFileDTO.getOriName());
-			boardFileDTO.setNum(218L);//XXXX
+			boardFileDTO.setNum(boardDTO.getNum());
 			
 			int count = noticeDAO.setAddFile(boardFileDTO);
 			System.out.println("들어갔으려나?? : " + count);

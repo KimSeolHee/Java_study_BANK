@@ -31,7 +31,10 @@
 		     		select * from notice where num=#{num}
 		     	</select>
 		     	<insert id="setAdd" parameterType="BoardDTO">
-		     		insert into notice values(BOARD_SEQ.NEXTVAL, #{title}, #{writer}, #{contents}, sysdate, 0)
+			     	<selectKey order="BEFORE" keyProperty="num" resultType="Long">
+			     		SELECT BOARD_SEQ.NEXTVAL FROM DUAL
+			     	</selectKey>
+		     		insert into notice values(#{num}, #{title}, #{writer}, #{contents}, sysdate, 0)
 		     	</insert>
 		     	<update id="setUpdate" parameterType="BoardDTO">
 		     		UPDATE notice SET title = #{title}, contents=#{contents}  WHERE NUM = #{num}
