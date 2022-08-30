@@ -22,14 +22,14 @@
 <c:import url="../template/header.jsp"></c:import>
 	<section class="container mt-5 col-lg-5">
 	<div class="mt-5 mb-3"><h2 >로그인🔑</h2></div>
- 	<form action="./login.do" method="post">
+ 	<form action="./login.do" method="post" id="form">
 		<div class="row">
 			  <div class="mb-3 row">
 			    <div>
 			    <label for="staticEmail" class="col-sm-2 col-form-label">id</label>
 			    </div>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" name = "id" placeholder="아이디" value="tttt">
+			      <input type="text" class="form-control" name = "id" id= "id" placeholder="아이디" value="tttt">
 			    </div>
 			  </div>
 			  <div class="mb-3 row">
@@ -37,16 +37,15 @@
 			    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
 			    </div>
 			    <div class="col-sm-10">
-			      <input type="password" class="form-control"  name = "pw" placeholder="패스워드" value="tttt">
+			      <input type="password" class="form-control"  id= "pw" name = "pw" placeholder="패스워드" value="tttt">
 			    </div>
 			    <div class="form-check pt-3 ">
-				  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-				  <label class="form-check-label" for="flexCheckDefault">
-				    자동로그인 저장
+				  <label class="form-check-label" for="flexCheckDefault" id="lav" style="color:red;">
+				    
 				  </label>
 				</div>
 			    <div class="col-auto pt-3 mb-3">
-				    <button type="submit" class="btn btn-dark mb-3 text-white">로그인</button>
+				    <button type="button" id="btn1" class="btn btn-dark mb-3 text-white">로그인</button>
 				 </div>
 			  </div>
 		</div>
@@ -56,5 +55,6 @@
 	<br>
 	<br>
     <c:import url="../template/footer.jsp"></c:import>
+	<script src="/resources/js/member.js"></script>
 </body>
 </html>
