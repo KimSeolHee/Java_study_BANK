@@ -29,15 +29,15 @@
   <div class="col-4">
     <label class="visually-hidden" for="search">Kind</label>
     <select name="kind" class="form-select" id="search">
-      <option value="contents">내용</option>
-      <option value="title">제목</option>
-      <option value="writer">작성자</option>
+      <option class="kinds" value="contents">내용</option>
+      <option class="kinds" value="title">제목</option>
+      <option class="kinds" value="writer">작성자</option>
     </select>
   </div>
   <div class="col-8" style="padding-left: 0px;">
     <label class="visually-hidden" for="search">검색어</label>
     <div class="input-group">
-      <input type="text" name="search" class="form-control" id="search" placeholder="검색어를 입력하세요.">
+      <input type="text" name="search" class="form-control" value="${param.search}" placeholder="검색어를 입력하세요.">
     <button type="submit" class="btn btn-dark text-white"><i class="fas fa-search"></i></button>
     </div>
   </div>
@@ -101,5 +101,22 @@
 	</section>
 	<br>
 <c:import url="../template/footer.jsp"></c:import>
+<script src="/resources/js/board.js"></script>
+<script>
+  const kinds = document.getElementsByClassName('kinds');
+  let k = '${param.kind}';
+  console.log(k)
+
+  for(let i =0;i < kinds.length;i++){
+    if(k == kinds[i].value){
+      kinds[i].selected = true;
+      break;
+    }
+  }
+
+/*   if(k == kinds.value){
+    kinds.value = 'contents';
+  } */
+</script>
 </body>
 </html>
