@@ -36,7 +36,7 @@ public class FileManager {
 		file = new File(file, fileName);
 		multipartFile.transferTo(file);
 		
-		return fileName;		
+		return fileName;
 	}
 
 }

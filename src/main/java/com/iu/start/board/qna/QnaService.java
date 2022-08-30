@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.iu.start.board.impl.BoardDTO;
 import com.iu.start.board.impl.BoardFileDTO;
 import com.iu.start.board.impl.BoardService;
+import com.iu.start.util.FileManager;
 import com.iu.start.util.Pager;
 
 @Service
@@ -26,6 +27,8 @@ public class QnaService implements BoardService{
 
 	@Autowired
 	private ServletContext servletContext;
+	@Autowired
+	private FileManager fileManager;
 	
 	public int setReply(QnaDTO qnaDTO) throws Exception{
 		BoardDTO boardDTO = qnaDAO.getDetail(qnaDTO);
@@ -64,32 +67,25 @@ public class QnaService implements BoardService{
 	public int setAdd(BoardDTO boardDTO, MultipartFile[] files, ServletContext servletContext) throws Exception {
 		int result = qnaDAO.setAdd(boardDTO,files);
 		
-		String realPath = servletContext.getRealPath("resources/upload/qna");
-		System.out.println(realPath);
-		File file = new File(realPath);
-		if(!file.exists()) {
-			file.mkdirs();
-		}
-		for(MultipartFile mf : files) {
-			if(mf.isEmpty()) {
-				continue;
+		String path = "resources/upload/qna";
+			
+			for(MultipartFile multipartFile : files) {
+				if(multipartFile.isEmpty()) {
+					continue;
+				}			
+				System.out.println(servletContext);
+				String fileName = fileManager.saveFile(path, multipartFile, servletContext);
+				BoardFileDTO boardFileDTO = new BoardFileDTO();
+				System.out.println(fileName);
+				System.out.println(multipartFile);
+				boardFileDTO.setFileName(fileName);
+				boardFileDTO.setOriName(multipartFile.getOriginalFilename());
+				boardFileDTO.setNum(boardDTO.getNum());
+				System.out.println(boardDTO.getNum());
+				
+				int count = qnaDAO.setAddFile(boardFileDTO);
+				System.out.println(count);
 			}
-			String fileName = UUID.randomUUID().toString();
-			fileName = fileName+"_"+mf.getOriginalFilename();
-			
-			file = new File(file, fileName);
-			mf.transferTo(file);
-			
-			BoardFileDTO boardFileDTO = new BoardFileDTO();
-			boardFileDTO.setFileName(fileName);
-			boardFileDTO.setOriName(mf.getOriginalFilename());
-			boardFileDTO.setNum(225L);//XXXXX
-			
-			int count = qnaDAO.setAddFile(boardFileDTO);
-			System.out.println(count);
-			
-		}
-		
 		return result; 
 	}
 
