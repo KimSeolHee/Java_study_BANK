@@ -5,8 +5,7 @@ const div3 = document.getElementById('div3');
 let count = 0;
 let idx = 0;
 fileAdd.addEventListener("click", function(){
-    count = count +1;
-    if(count > 5){
+    if(count > 4){
         alert("최대 5개만 가능");
         return
     }
@@ -18,7 +17,7 @@ fileAdd.addEventListener("click", function(){
     c = document.createAttribute('id');
     c.value = 'file'+idx;
     div.setAttributeNode(c);
-            
+    
     //자식 Element Label생성
     let label = document.createElement('label');
     let labelText = document.createTextNode('file');
@@ -29,11 +28,11 @@ fileAdd.addEventListener("click", function(){
     labelClass = document.createAttribute('for');
     labelClass.value= "files";
     label.setAttributeNode(labelClass);
-        
+    
     //div에 label을 넣어줌
     div.appendChild(label);
-            
-//input태그만들기
+    
+    //input태그만들기
     let input = document.createElement('input');
     let type = document.createAttribute('type');
     type.value = "file";
@@ -50,8 +49,8 @@ fileAdd.addEventListener("click", function(){
         
     //div안에 input태그 넣기
     div.appendChild(input);
-
-
+    
+    
     //delete버튼
     let del = document.createElement('button');
     let type2 = document.createAttribute('type');
@@ -69,19 +68,19 @@ fileAdd.addEventListener("click", function(){
     buttonAttr = document.createAttribute('title');
     buttonAttr.value=idx;
     del.setAttributeNode(buttonAttr);
-
-        
+    
+    
     //addFiles에 div를 append함
     addFiles.append(div);
+    count = count +1;
     idx++;
-    });
+});
 
 addFiles.addEventListener("click", function(event){
     if(event.target.className == 'del'){
-        for(let i = 0;i < idx; i++){
-            let file = document.getElementById('file'+i);
-            file.remove();
-        }
+        count--;
+        const div4 = document.getElementById('file'+event.target.title);
+        div4.remove();
     }
 })
 
