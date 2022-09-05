@@ -45,14 +45,16 @@ public class BankBookDAOTest extends MyAbstractTest{
 //		List<BankBookDTO> ar = bankBookDAO.getList();
 //		assertEquals(0, ar.size());
 //	}
-	
+	@Test
 	public void setComment() throws Exception{
 		BankBookCommentDTO commentDTO = new BankBookCommentDTO();
-		commentDTO.setNum(1661254148035L);
-		commentDTO.setWriter('tttt');
-		commentDTO.setContents('ggg');
+		commentDTO.setBookNum(1661584257995L);
+		commentDTO.setWriter("tttt");
+		commentDTO.setContents("ggg");
 		
-		asserEquals(1,result);
+		int result = bankBookDAO.setComment(commentDTO);
+		
+		assertEquals(1,result);
 		
 	}
 }

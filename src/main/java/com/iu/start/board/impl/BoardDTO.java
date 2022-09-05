@@ -3,7 +3,7 @@ package com.iu.start.board.impl;
 import java.sql.Date;
 import java.util.List;
 
-public class BoardDTO {
+public class BoardDTO extends CommentDTO{
 
 	private String title;
 	private Long hit;
@@ -27,5 +27,6 @@ public class BoardDTO {
 	public void setHit(Long hit) {
 		this.hit = hit;
 	}
+
 	
 }

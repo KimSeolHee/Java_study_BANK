@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class CommentDTO {
 	private Long num;
-	private Long bookNum;
 	private String writer;
 	private String contents;
 	private Date regDate;
@@ -13,12 +12,6 @@ public class CommentDTO {
 	}
 	public void setNum(Long num) {
 		this.num = num;
-	}
-	public Long getBookNum() {
-		return bookNum;
-	}
-	public void setBookNum(Long bookNum) {
-		this.bookNum = bookNum;
 	}
 	public String getWriter() {
 		return writer;

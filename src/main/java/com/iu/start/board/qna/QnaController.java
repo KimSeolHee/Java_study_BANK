@@ -85,12 +85,12 @@ public class QnaController {
 		
 		return mv;
 	}
-	@RequestMapping(value = "update.do", method = RequestMethod.POST)
-	public String setUpdate(BoardDTO boardDTO) throws Exception{
-		int result = qnaService.setUpdate(boardDTO);
-		
-		return "redirect: ./detail.do?num="+boardDTO.getNum();
-	}
+//	@RequestMapping(value = "update.do", method = RequestMethod.POST)
+//	public String setUpdate(BoardDTO boardDTO) throws Exception{
+//		int result = qnaService.setUpdate(boardDTO);
+//		
+//		return "redirect: ./detail.do?num="+boardDTO.getNum();
+//	}
 	//글삭제
 	@RequestMapping(value = "delete.do", method =RequestMethod.GET)
 	public String setDelete(BoardDTO boardDTO) throws Exception{

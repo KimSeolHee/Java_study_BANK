@@ -26,8 +26,6 @@ public class QnaService implements BoardService{
 	private QnaDAO qnaDAO;
 
 	@Autowired
-	private ServletContext servletContext;
-	@Autowired
 	private FileManager fileManager;
 	
 	public int setReply(QnaDTO qnaDTO) throws Exception{
@@ -80,8 +78,8 @@ public class QnaService implements BoardService{
 				System.out.println(multipartFile);
 				boardFileDTO.setFileName(fileName);
 				boardFileDTO.setOriName(multipartFile.getOriginalFilename());
-				boardFileDTO.setNum(boardDTO.getNum());
-				System.out.println(boardDTO.getNum());
+//				boardFileDTO.setNum(boardDTO.getNum());
+//				System.out.println(boardDTO.getNum());
 				
 				int count = qnaDAO.setAddFile(boardFileDTO);
 				System.out.println(count);
