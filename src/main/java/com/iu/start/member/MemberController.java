@@ -117,22 +117,31 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
-	public String login(HttpSession session, BankMembersDTO dto) throws Exception {
+	public ModelAndView login(HttpSession session, BankMembersDTO dto) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		System.out.println("로그인 실행-post");
 		dto = bankMembersService.getLogin(dto);
-		if(dto != null) {
-			System.out.println("성공");
-		}else if(dto == null) {
-			System.out.println("실패");
-		}
 		
 		//session은 일정시간동안 살아있음! 로그인 할땐 session을 이용해야함.
 //		HttpSession session = request.getSession(); session을 매개변수로 받으면 생략가능
 		session.setAttribute("member", dto);
 		
+		int result= 0;
+		String message = "로그인실패";
+		String url = "./login.do";
+		if(dto != null) {
+			result = 1;
+			url = "../";
+			message = "로그인 성공";
+		}
+		mv.addObject("result", result);
+		mv.addObject("message", message);
+		mv.addObject("url", url);
+		mv.setViewName("common/result");
+		
 //		model.addAttribute("member", dto); 이전에 했던 방법
 		//"rediect: 다시접속할 URL주소(절대경로, 상대경로)"
-		return "redirect: ../";
+		return mv;
 	}
 	
 	//get

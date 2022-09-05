@@ -1,6 +1,6 @@
 function check() {
 //   const all = document.getElementById("all");
-const all = document.querySelector(#all);
+const all = document.querySelector("#all");
   //   const cb = document.getElementsByClassName("cb");
   const cb = document.querySelectorAll(".cb");
   const req = document.getElementsByClassName("req");
