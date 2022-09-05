@@ -35,6 +35,12 @@ public class MemberController {
 //	@Autowired
 //	private BankAccountService bankAccountService;
 	
+	@RequestMapping(value = "agree.do", method = RequestMethod.GET)
+	public String setAgree()throws Exception {
+		
+		return "member/agree";
+	}
+	
 	@RequestMapping(value="myPage.do", method = RequestMethod.GET)
 	public ModelAndView myPage(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -111,22 +117,31 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
-	public String login(HttpSession session, BankMembersDTO dto) throws Exception {
+	public ModelAndView login(HttpSession session, BankMembersDTO dto) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		System.out.println("로그인 실행-post");
 		dto = bankMembersService.getLogin(dto);
-		if(dto != null) {
-			System.out.println("성공");
-		}else if(dto == null) {
-			System.out.println("실패");
-		}
 		
 		//session은 일정시간동안 살아있음! 로그인 할땐 session을 이용해야함.
 //		HttpSession session = request.getSession(); session을 매개변수로 받으면 생략가능
 		session.setAttribute("member", dto);
 		
+		int result= 0;
+		String message = "로그인실패";
+		String url = "./login.do";
+		if(dto != null) {
+			result = 1;
+			url = "../";
+			message = "로그인 성공";
+		}
+		mv.addObject("result", result);
+		mv.addObject("message", message);
+		mv.addObject("url", url);
+		mv.setViewName("common/result");
+		
 //		model.addAttribute("member", dto); 이전에 했던 방법
 		//"rediect: 다시접속할 URL주소(절대경로, 상대경로)"
-		return "redirect: ../";
+		return mv;
 	}
 	
 	//get
@@ -171,12 +186,10 @@ public class MemberController {
 // 3번째 방법	
 	@RequestMapping(value = "join.do", method = RequestMethod.POST)
 	public String join(BankMembersDTO BankMembersDTO, MultipartFile photo, HttpSession session) throws Exception {
-		System.out.println("회원가입 Post 실행");
 		System.out.println(photo);
 		System.out.println("upload 파일명 : "+photo.getOriginalFilename());
 		System.out.println("upload 파라미터명 : "+ photo.getName());
 		System.out.println("upload 파일의 크기 : "+photo.getSize());
-		
 		int result = bankMembersService.setJoin(BankMembersDTO, photo, session);
 		
 		return "redirect: ../";

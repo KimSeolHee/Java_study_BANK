@@ -40,16 +40,10 @@
 				<div ><label  for="exampleFormControlInput1">글내용</label></div>
 				<textarea name = "contents" class="form-control mt-1" id="contents" rows="5"></textarea>
 			</div>
-			
-			<div class="form-group pt-3 ">
-				<div class="mb-1 mt-1"><label for="exampleFormControlInput1">File</label></div>
-				    <input type="file"  name = "files" class="form-control">
-				<div class="mb-1 mt-1"><label for="exampleFormControlInput1">File</label></div>
-				    <input type="file"  name = "files" class="form-control">
-				<div class="mb-1 mt-1"><label for="exampleFormControlInput1">File</label></div>
-				    <input type="file"  name = "files" class="form-control">
-			</div>
-			
+
+			<div id="addFiles">
+				<button class="btn btn-dark mb-3 text-white" type="button" id="fileAdd">파일추가</button>
+			</div>			
 			
 			<div class="mt-3 mb-4">
 			<input class="btn btn-dark mb-3 text-white" type="submit" value="작성하기" >
@@ -57,6 +51,7 @@
 		</form>
 </section>
 <c:import url="../template/footer.jsp"></c:import>    
+<script src="/resources/js/board.js"></script>
 <script type="text/javascript">
 	$("#contents").summernote(
 			{

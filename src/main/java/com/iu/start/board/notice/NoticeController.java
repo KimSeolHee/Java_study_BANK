@@ -55,9 +55,22 @@ public class NoticeController {
 	}
 	@RequestMapping(value = "add.do", method = RequestMethod.POST)
 	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile[] files, HttpSession session) throws Exception{
-		int result = noticeService.setAdd(boardDTO, files, session.getServletContext());
+		noticeService.setAdd(boardDTO, files, session.getServletContext());
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:./list.do");
+		
+		int result = 0;
+		String message ="글 등록 실패";
+		String url = "./add.do";
+		if(boardDTO != null) {
+			result = 1;
+			message = "글 등록 성공";
+			url = "./list.do";
+		}
+		
+		mv.addObject("result", result);
+		mv.addObject("message", message);
+		mv.addObject("url", url);
+		mv.setViewName("common/result");
 		return mv;
 	}
 	
