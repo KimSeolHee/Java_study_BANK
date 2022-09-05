@@ -28,10 +28,15 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletResponse response) {
-		Cookie cookie = new Cookie("hi", "hello");
-		cookie.setMaxAge(600);//60초
-		response.addCookie(cookie);
-		
+//		Cookie cookie = new Cookie("hi", "hello");
+//		cookie.setMaxAge(600);//60초
+//		response.addCookie(cookie);
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return "test";
 	}

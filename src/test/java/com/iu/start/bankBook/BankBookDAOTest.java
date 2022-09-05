@@ -40,9 +40,19 @@ public class BankBookDAOTest extends MyAbstractTest{
 //		assertEquals(1, result);
 //	}
 	
-	@Test
-	public void getList() throws Exception {
-		List<BankBookDTO> ar = bankBookDAO.getList();
-		assertEquals(0, ar.size());
+//	@Test
+//	public void getList() throws Exception {
+//		List<BankBookDTO> ar = bankBookDAO.getList();
+//		assertEquals(0, ar.size());
+//	}
+	
+	public void setComment() throws Exception{
+		BankBookCommentDTO commentDTO = new BankBookCommentDTO();
+		commentDTO.setNum(1661254148035L);
+		commentDTO.setWriter('tttt');
+		commentDTO.setContents('ggg');
+		
+		asserEquals(1,result);
+		
 	}
 }

@@ -39,4 +39,8 @@ public class BankBookDAO {
 		return sqlSession.delete(NAMESPACE+"setDelete", dto);
 	}
 	
+	public int setComment(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setComment", bankBookCommentDTO);
+	}
+	
 }
