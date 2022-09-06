@@ -35,5 +35,4 @@ public class BankBookService {
 		return bankBookDAO.setDelete(bookDTO);
 	}
 
-
 }

@@ -58,7 +58,26 @@
 	<button class="btn btn-dark mb-3 text-white"><a href="../bankAccount/add.do?bookNum=${detail.bookNum}" style="text-decoration:none; color: white;">가입하기</a></button>
 	</c:if>
 	</div>
+		<!--Comment-->
+		<div class="row">
+			<div class="mb-3">
+				<label for="exampleFormControlInput1" class="form-label">ID</label>
+				<input type="text" class="form-control" id="writer" placeholder="Enter your ID">
+			</div>
+			<div class="mb-3">
+				<label for="contents" class="form-label">Contents</label>
+				<textarea class="form-control" id="contents" rows="3"></textarea>
+			</div>
+			<div>
+				<button type="button" id="replyButton" data-booknum-num="${detail.bookNum}">댓글작성</button>
+			</div>
+			<div id="commentList" class="table table-striped table-hover mt-4">
+				<h5><b>댓글</b></h5>
+
+			</div>
+		</div>
 	</div>
 	<c:import url="../template/footer.jsp"></c:import>
+	<script src="/resources/js/bankbookComment.js"></script>
 </body>
 </html>

@@ -10,12 +10,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.start.member.BankMembersDTO;
+import com.iu.start.util.CommentPager;
 
 @Controller
 @RequestMapping(value = "/bankbook/*")
@@ -23,12 +26,56 @@ public class BankBookController {
 	
 	@Autowired
 	private BankBookService bankBookService;
+	@Autowired
 	private BankBookCommentService bankBookCommentService;
 	
-	@PostMapping("reply??")
-	public void setCommentAdd(BankBookCommentDTO bankBookCommentDTO)throws Exception{
+//	@PostMapping("commentAdd")
+//	public ModelAndView setCommentAdd(BankBookCommentDTO bankBookCommentDTO)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		int result = bankBookCommentService.setCommentAdd(bankBookCommentDTO);
+//		mv.addObject("result", result);
+//		mv.setViewName("common/ajaxResult");
+//		
+//		return mv;
+//	}
+	@PostMapping("commentAdd")
+	@ResponseBody
+	public String setCommentAdd(BankBookCommentDTO bankBookCommentDTO)throws Exception{
+		
 		int result = bankBookCommentService.setCommentAdd(bankBookCommentDTO);
+		//{"key" : "value"}
+		String jsonResult = "{\"result\":\""+result+"\"}";
+		
+		return jsonResult;
 	}
+	
+//1. 
+//	@GetMapping("commentList")
+//	public ModelAndView getComment(CommentPager commentPager)throws Exception {
+//		ModelAndView mv= new ModelAndView();
+//		List<BankBookCommentDTO> ar = bankBookCommentService.getComment(commentPager);
+//		System.out.println("List");
+//		System.out.println(ar.size());
+//		
+//		mv.addObject("commentList", ar);
+//		mv.setViewName("common/commentList");
+//		return mv;
+//	}
+//	
+	//2.
+	@GetMapping("commentList")
+	@ResponseBody
+	public List<BankBookCommentDTO> getComment(CommentPager commentPager)throws Exception {
+		List<BankBookCommentDTO> ar = bankBookCommentService.getComment(commentPager);
+		System.out.println("List");
+		System.out.println(ar.size());
+		//json
+		// DTO == {}
+		// num = 1 =={"num":1, "bookNum": 123, "writer":"name"}
+		//[{}]
+
+		return ar;
+	}	
 	
 	
 	
