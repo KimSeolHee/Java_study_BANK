@@ -23,9 +23,6 @@
 		 <delete id="setDelete" parameterType="BankBookDTO">
 		 	delete bankBook where bookNum = #{bookNum}
 		 </delete>
-		 <insert id="setComment" parameterType="BankBookCommentDTO">
-		 	insert into BB_COMMENT
-			values (BOARD_SEQ.NEXTVAL,#{bookNum},#{writer},#{contents},sysdate)
-		 </insert>		 
+		 	 
 		 
 		 </mapper>

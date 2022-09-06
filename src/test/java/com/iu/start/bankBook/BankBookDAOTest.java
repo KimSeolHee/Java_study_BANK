@@ -15,6 +15,8 @@ public class BankBookDAOTest extends MyAbstractTest{
 	@Autowired
 	private BankBookDAO bankBookDAO;
 	
+	private BankBookCommentDAO bankBookCommentDAO;
+	
 //	@Test
 //	public void setUpdate() throws Exception{
 //		BankBookDTO bookDTO = new BankBookDTO();
@@ -46,13 +48,13 @@ public class BankBookDAOTest extends MyAbstractTest{
 //		assertEquals(0, ar.size());
 //	}
 	@Test
-	public void setComment() throws Exception{
+	public void setCommentAdd() throws Exception{
 		BankBookCommentDTO commentDTO = new BankBookCommentDTO();
-		commentDTO.setBookNum(1661584257995L);
+		commentDTO.setBookNum(1662100182355L);
 		commentDTO.setWriter("tttt");
-		commentDTO.setContents("ggg");
+		commentDTO.setContents("fff");
 		
-		int result = bankBookDAO.setComment(commentDTO);
+		int result = bankBookCommentDAO.setCommentAdd(commentDTO);
 		
 		assertEquals(1,result);
 		
