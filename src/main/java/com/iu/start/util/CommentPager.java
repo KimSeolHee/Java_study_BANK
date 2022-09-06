@@ -12,7 +12,7 @@ public class CommentPager{
 	private Long perPage;
 	
 	public void getRowNum() {
-		startRow = this.getPage() * this.getPerPage()- (this.getPerPage()-1) ;
+		startRow = this.getPage() * this.getPerPage()- (this.getPerPage()-1);
 		lastRow = this.getPage() * this.getPerPage();
 	}
 	public void getNum(Long totalCount) {

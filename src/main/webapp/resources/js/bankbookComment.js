@@ -3,7 +3,7 @@ const replyButton = document.getElementById('replyButton');
 const writer = document.getElementById('writer');
 const contents = document.getElementById('contents');
 const commentList = document.getElementById('commentList');
-
+const wr = document.querySelector('#wr');
 
 getCommentList();
 
@@ -32,10 +32,8 @@ replyButton.addEventListener("click", function(){
     xhttp.onreadystatechange=function(){
         if(this.readyState==4&& this.status==200){
             let result = xhttp.responseText.trim();
-            console.log(result);
             result = JSON.parse(result);
-            console.log(result.result);
-            if(result.result == 1){
+            if(result.comment == 1){
                 alert("댓글등록 성공");
                 getCommentList();
             }
@@ -68,6 +66,7 @@ function getCommentList(){
             resultAttr.value = "table";
             result.setAttributeNode(resultAttr);
 
+            commentList.innerHTML="";
             for(let i = 0;i <ar.length;i++){
                 let tr = document.createElement('tr');
 
@@ -88,9 +87,10 @@ function getCommentList(){
                 result.append(tr);
 
             }
+            
                 commentList.append(result);
-
         }
+
     })
 
 }

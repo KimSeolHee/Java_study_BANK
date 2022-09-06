@@ -66,7 +66,7 @@ public class BankBookDAOTest extends MyAbstractTest{
 	public void getComment()throws Exception{
 		CommentPager commentPager = new CommentPager();
 		commentPager.setBookNum(1662341815744L);
-		commentPager.setPage(1L);
+//		commentPager.setPage(1L);
 		commentPager.getRowNum();
 		List<BankBookCommentDTO> ar = bankBookCommentDAO.getComment(commentPager);
 		assertNotEquals(0, ar.size());

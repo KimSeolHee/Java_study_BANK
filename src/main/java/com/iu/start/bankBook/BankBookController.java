@@ -29,6 +29,7 @@ public class BankBookController {
 	@Autowired
 	private BankBookCommentService bankBookCommentService;
 	
+	//jsp방법
 //	@PostMapping("commentAdd")
 //	public ModelAndView setCommentAdd(BankBookCommentDTO bankBookCommentDTO)throws Exception{
 //		ModelAndView mv = new ModelAndView();
@@ -38,18 +39,20 @@ public class BankBookController {
 //		
 //		return mv;
 //	}
+	
+	//json방법
 	@PostMapping("commentAdd")
 	@ResponseBody
 	public String setCommentAdd(BankBookCommentDTO bankBookCommentDTO)throws Exception{
 		
 		int result = bankBookCommentService.setCommentAdd(bankBookCommentDTO);
 		//{"key" : "value"}
-		String jsonResult = "{\"result\":\""+result+"\"}";
-		
+		String jsonResult = "{\"comment\":\""+result+"\"}";
+		//{"comment":"1"}이게 넘어감
 		return jsonResult;
 	}
 	
-//1. 
+//1. jsp
 //	@GetMapping("commentList")
 //	public ModelAndView getComment(CommentPager commentPager)throws Exception {
 //		ModelAndView mv= new ModelAndView();
@@ -67,12 +70,10 @@ public class BankBookController {
 	@ResponseBody
 	public List<BankBookCommentDTO> getComment(CommentPager commentPager)throws Exception {
 		List<BankBookCommentDTO> ar = bankBookCommentService.getComment(commentPager);
-		System.out.println("List");
-		System.out.println(ar.size());
 		//json
 		// DTO == {}
 		// num = 1 =={"num":1, "bookNum": 123, "writer":"name"}
-		//[{}]
+		//[{}{}{}{}{}] jackson이 다 처리해준다(maven에서 pom.xml다운) 
 
 		return ar;
 	}	
