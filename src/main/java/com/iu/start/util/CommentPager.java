@@ -10,18 +10,23 @@ public class CommentPager{
 	private Long perBlock;
 	private Long page;
 	private Long perPage;
+	private Long totalPage;
 	
 	public void getRowNum() {
 		startRow = this.getPage() * this.getPerPage()- (this.getPerPage()-1);
 		lastRow = this.getPage() * this.getPerPage();
 	}
 	public void getNum(Long totalCount) {
-		Long totalPage = (long)Math.ceil((double)totalCount / this.getPerPage());
-		Long totalBlock = (long)Math.ceil((double)totalPage/this.getPerBlock());
-//		Long culBlock = 
-		
+		this.totalPage = (long)Math.ceil((double)totalCount / this.getPerPage());
 	}
 	
+	
+	public Long getTotalPage() {
+		return totalPage;
+	}
+	public void setTotalPage(Long totalPage) {
+		this.totalPage = totalPage;
+	}
 	public Long getStartRow() {
 		return startRow;
 	}

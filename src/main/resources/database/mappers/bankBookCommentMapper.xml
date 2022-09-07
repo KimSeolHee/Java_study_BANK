@@ -4,12 +4,15 @@
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 		    
 		     <mapper namespace="com.iu.start.bankBook.BankBookCommentDAO">
+		     	<select id="getCommentListTotalCount" resultType="Long" parameterType="CommentPager">
+		     		select count(num) from BB_COMMENT where bookNum=#{bookNum} ORDER BY NUM DESC
+		     	</select>
 				 <select id="getComment" parameterType="CommentPager" resultType="BankBookCommentDTO">
 				 	select * from (select rownum R, N.* from 
 					(select * from BB_COMMENT where booknum=#{bookNum} order by num desc)N)
 					where R between #{startRow} and #{lastRow}
 				 </select>
-				 <select id="getCount" resultType="Long" parameterType="CommentPager">
+				 <select id="getCount" resultType="Long">
 				 	select count(num) from BB_COMMENT
 				 </select>
 		     	<insert id="setCommentAdd" parameterType="BankBookCommentDTO">

@@ -13,7 +13,6 @@ public class BankBookDTO {
 	private String bookContents;
 	private List<BankAccountDTO> bankAccountDTOs;
 	
-	
 	public Long getBookNum() {
 		return bookNum;
 	}

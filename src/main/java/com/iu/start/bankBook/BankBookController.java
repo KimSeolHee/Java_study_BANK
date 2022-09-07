@@ -2,7 +2,9 @@ package com.iu.start.bankBook;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -68,14 +70,17 @@ public class BankBookController {
 	//2.
 	@GetMapping("commentList")
 	@ResponseBody
-	public List<BankBookCommentDTO> getComment(CommentPager commentPager)throws Exception {
+	public Map<String, Object> getComment(CommentPager commentPager)throws Exception {
 		List<BankBookCommentDTO> ar = bankBookCommentService.getComment(commentPager);
 		//json
 		// DTO == {}
 		// num = 1 =={"num":1, "bookNum": 123, "writer":"name"}
 		//[{}{}{}{}{}] jackson이 다 처리해준다(maven에서 pom.xml다운) 
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list",ar);
+		map.put("pager", commentPager);
 
-		return ar;
+		return map;
 	}	
 	
 	

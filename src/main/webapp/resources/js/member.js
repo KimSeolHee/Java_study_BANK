@@ -7,9 +7,6 @@ const lav = document.getElementById('lav');
 btn1.addEventListener('click', function(){
     let u = id.value;
     let p = pw.value;
-    console.log(u=="");
-    console.log(u.length);
-
 
     if(u==""){
         lav.innerHTML = "id틀렸어요";

@@ -31,12 +31,12 @@ public class HomeController {
 //		Cookie cookie = new Cookie("hi", "hello");
 //		cookie.setMaxAge(600);//60초
 //		response.addCookie(cookie);
-		try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(10000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		return "test";
 	}

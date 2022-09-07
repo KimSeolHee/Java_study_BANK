@@ -18,9 +18,12 @@ public class BankBookCommentService {
 	}
 	
 	public List<BankBookCommentDTO> getComment(CommentPager commentPager)throws Exception{
-//		Long totalCount = bankBookCommentDAO.getCount(commentPager);
 		commentPager.getRowNum();
-//		commentPager.getNum(totalCount);
+		Long totalCount = bankBookCommentDAO.getCommentListTotalCount(commentPager);
+		commentPager.getNum(totalCount);
 		return bankBookCommentDAO.getComment(commentPager);
 	}
+	
+	
+	
 }

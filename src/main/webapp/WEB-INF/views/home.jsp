@@ -9,8 +9,6 @@
 <h1>
 	My Bank Page 🙆‍♀️🙆‍♀️ 
 </h1>
-<h3>확인하려고 씀</h3>
-<h3>확인하려고 씀2</h3>
 <c:if test="${empty sessionScope.member}">
 <div>
 	<a href = "./member/login.do"><b>로그인🔑</b></a>
@@ -40,9 +38,5 @@
 <div>
 	<a href = "./board/list.do"><b>게시판🚶‍♀️‍🏃‍♂️🤸</b></a>
 </div>
-
-<script>
-	alert("Hello");
-</script>
 </body>
 </html>
