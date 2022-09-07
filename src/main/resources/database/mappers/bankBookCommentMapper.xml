@@ -19,4 +19,10 @@
 				 	insert into BB_COMMENT
 					values (BOARD_SEQ.NEXTVAL,#{bookNum},#{writer},#{contents},sysdate)
 				 </insert>	
+				 <delete id="setCommentDelete" parameterType="BankBookCommentDTO">
+				 	delete BB_COMMENT where num = #{num}
+				 </delete>
+				 <update id="setCommentUpdate" parameterType="BankBookCommentDTO">
+				 	update BB_COMMENT set writer=#{writer}, contents=#{contents} where num=#{num}
+				 </update>
 		     </mapper>
