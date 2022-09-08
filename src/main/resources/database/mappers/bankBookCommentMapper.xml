@@ -23,6 +23,6 @@
 				 	delete BB_COMMENT where num = #{num}
 				 </delete>
 				 <update id="setCommentUpdate" parameterType="BankBookCommentDTO">
-				 	update BB_COMMENT set writer=#{writer}, contents=#{contents} where num=#{num}
+				 	update BB_COMMENT set contents=#{contents} where num=#{num}
 				 </update>
 		     </mapper>

@@ -167,6 +167,8 @@ ${detail.bookContents}</textarea
                   </div>
                   <div class="modal-body">
                     <form>
+
+                      <input type="hidden" id="num">
                       <div class="mb-3">
                         <label for="recipient-name" class="col-form-label"
                           >writer</label
@@ -174,7 +176,7 @@ ${detail.bookContents}</textarea
                         <input
                           type="text"
                           class="form-control"
-                          id="recipient-name"
+                          id="updateWriter"
                           value="${member.id}"
                           readonly
                         />
@@ -185,9 +187,10 @@ ${detail.bookContents}</textarea
                         >
                         <textarea
                           class="form-control"
-                          id="message-text"
+                          id="updateContent"
                         ></textarea>
                       </div>
+
                     </form>
                   </div>
                   <div class="modal-footer">
@@ -198,7 +201,7 @@ ${detail.bookContents}</textarea
                     >
                       취소
                     </button>
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-dark" id="updateButton" data-bs-dismiss="modal">
                       수정하기
                     </button>
                   </div>
