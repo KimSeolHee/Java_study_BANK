@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.start.board.impl.BoardDTO;
+import com.iu.start.member.BankMembersDTO;
 import com.iu.start.util.Pager;
 
 @Controller
@@ -50,8 +51,14 @@ public class NoticeController {
 	}
 	//글작성
 	@RequestMapping(value = "add.do", method = RequestMethod.GET)
-	public String setAdd(Model model) throws Exception{
-		return "board/add";
+	public String setAdd(HttpSession session) throws Exception{
+		BankMembersDTO bankMemberDTO = (BankMembersDTO) session.getAttribute("member");
+		
+		if(bankMemberDTO != null) {
+			return "board/add";
+		}else {
+			return "redirect:../member/login.do";
+		}
 	}
 	@RequestMapping(value = "add.do", method = RequestMethod.POST)
 	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile[] files, HttpSession session) throws Exception{

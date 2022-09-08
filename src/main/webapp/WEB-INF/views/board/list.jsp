@@ -95,7 +95,7 @@
 </nav>
 			<div style="text-align:right;">
 				<c:if test="${not empty sessionScope.member}">
-				<button type="submit" class="btn btn-dark text-white"><a href="./add.do" style="text-decoration:none; color: white;"><b>글작성✏</b></a></button>
+				<a href="./add.do" class="btn btn-dark text-white" style="text-decoration:none; color: white;"><b>글작성✏</b></a>
 				</c:if>
 			</div>
 	</section>
