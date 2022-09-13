@@ -186,7 +186,6 @@ public class MemberController {
 // 3번째 방법	
 	@RequestMapping(value = "join.do", method = RequestMethod.POST)
 	public String join(BankMembersDTO BankMembersDTO, MultipartFile photo, HttpSession session) throws Exception {
-		System.out.println(photo);
 		System.out.println("upload 파일명 : "+photo.getOriginalFilename());
 		System.out.println("upload 파라미터명 : "+ photo.getName());
 		System.out.println("upload 파일의 크기 : "+photo.getSize());

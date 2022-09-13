@@ -71,11 +71,9 @@ public class QnaService implements BoardService{
 				if(multipartFile.isEmpty()) {
 					continue;
 				}			
-				System.out.println(servletContext);
 				String fileName = fileManager.saveFile(path, multipartFile, servletContext);
 				BoardFileDTO boardFileDTO = new BoardFileDTO();
 				System.out.println(fileName);
-				System.out.println(multipartFile);
 				boardFileDTO.setFileName(fileName);
 				boardFileDTO.setOriName(multipartFile.getOriginalFilename());
 //				boardFileDTO.setNum(boardDTO.getNum());

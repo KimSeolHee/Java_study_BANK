@@ -42,9 +42,28 @@
 		    		</collection>
 		    	</resultMap>
 		    
-		    	<select id="getLogin" parameterType="BankMembersDTO" resultType="BankMembersDTO">
-		    		SELECT ID, NAME FROM BANKMEMBERS WHERE ID=#{id} AND PW=#{pw}
+		    	<select id="getLogin" parameterType="BankMembersDTO" resultMap="getLoginResult">
+		    		select S.id, S.name, R.rolenum, R.rolename from
+					        (select * from bankmembers B
+					            inner join
+					            member_role M
+					            using (id)) S
+					        inner join
+					        role R
+					        on S.id = id
+					        where  S.id = #{id} and S.pw = #{pw}
+					        order by R.rolenum ASC
 		    	</select>
+		    	
+		    	<resultMap type="BankMembersDTO" id="getLoginResult">
+		    		<id column="USERNAME" property="userName"/>
+		    		<result column="NAME" property="name"/>
+		    		<collection property="roleDTOs" javaType="List" ofType="RoleDTO">
+		    			<id column="ROLENUM" property="roleNum"/>
+		    			<result column="ROLENAME" property="roleName"/>
+		    		</collection>
+		    	</resultMap>
+		    	
 		    	<insert id="setJoin" parameterType="BankMembersDTO">
 		    		INSERT INTO BANKMEMBERS VALUES (#{id},#{pw},#{name},#{email},#{phone})
 		    	</insert>

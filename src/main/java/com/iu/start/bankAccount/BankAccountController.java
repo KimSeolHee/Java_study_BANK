@@ -22,7 +22,6 @@ public class BankAccountController {
 //		System.out.println("add");
 //		DTO : userName, bookNum
 //		int result = this.dao.add(null);
-		System.out.println(bankAccountDTO.getBookNum());
 		BankMembersDTO bankMembersDTO = (BankMembersDTO)session.getAttribute("member");
 		bankAccountDTO.setUserId(bankMembersDTO.getId());
 		

@@ -13,7 +13,14 @@ public class BankMembersDTO {
 	private String phone;
 	private List<BankAccountDTO> bankAccountDTOs;
 	private MembersFileDTO membersFileDTO;
+	private List<RoleDTO> roleDTOs;
 	
+	public List<RoleDTO> getRoleDTOs() {
+		return roleDTOs;
+	}
+	public void setRoleDTOs(List<RoleDTO> roleDTOs) {
+		this.roleDTOs = roleDTOs;
+	}
 	public String getId() {
 		return id;
 	}
