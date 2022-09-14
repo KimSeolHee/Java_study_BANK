@@ -43,20 +43,19 @@
 		    	</resultMap>
 		    
 		    	<select id="getLogin" parameterType="BankMembersDTO" resultMap="getLoginResult">
-		    		select S.id, S.name, R.rolenum, R.rolename from
-					        (select * from bankmembers B
-					            inner join
-					            member_role M
-					            using (id)) S
+		    		select B.id, B.name, R.rolenum, R.rolename from bankmembers B
+					        inner join
+					        member_role M
+					        on B.id=M.id
 					        inner join
 					        role R
-					        on S.id = id
-					        where  S.id = #{id} and S.pw = #{pw}
+					        on M.rolenum = R.rolenum
+					        where B.id=#{id} and B.pw=#{pw}
 					        order by R.rolenum ASC
 		    	</select>
 		    	
 		    	<resultMap type="BankMembersDTO" id="getLoginResult">
-		    		<id column="USERNAME" property="userName"/>
+		    		<id column="ID" property="id"/>
 		    		<result column="NAME" property="name"/>
 		    		<collection property="roleDTOs" javaType="List" ofType="RoleDTO">
 		    			<id column="ROLENUM" property="roleNum"/>

@@ -13,6 +13,23 @@
 		</init-param>
 	</filter>
 	
+	<!-- error처리 -->
+	<error-page>
+		<error-code>404</error-code>
+		<error-code>405</error-code>
+		<location>/WEB-INF/views/errors/error_404.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>400</error-code>
+		<location>/error/error400</location>
+	</error-page>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/error500</location>
+	</error-page>
+	
 	<!-- 한글깨짐 보완 DB-->
 	<filter-mapping>
 		<filter-name>encode</filter-name>
