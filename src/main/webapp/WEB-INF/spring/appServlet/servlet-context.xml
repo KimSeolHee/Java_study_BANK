@@ -21,12 +21,12 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<!-- Interceptor 객체 생성 -->
+<!-- Interceptor 객체 생성 -->
 	<beans:bean class="com.iu.start.interceptor.AdminCheckInterceptor" id="adminCheckInterceptor"></beans:bean>
 	<beans:bean class="com.iu.start.interceptor.MemberInterceptor" id="memberInterceptor"></beans:bean>
 	
-	<!-- Interceptor 맵핑 -->
-	<interceptors>
+<!-- 	Interceptor 맵핑 -->
+ 	<interceptors>
 	
 		<interceptor>
 			<mapping path="/notice/**"/>

@@ -11,11 +11,23 @@ import org.springframework.stereotype.Component;
 // 공통코드 묶기
 import org.springframework.web.multipart.MultipartFile;
 
+import com.iu.start.file.FileDTO;
+
 @Component
 public class FileManager {
 
 //	@Autowired
 //	private ServletContext sevletContext;
+	
+	//delete
+	public boolean deleteFile(ServletContext servletContext, String path, FileDTO fileDTO)throws Exception{
+		String realPath = servletContext.getRealPath(path);
+		File file = new File(realPath, fileDTO.getFileName());
+		
+		return file.delete();
+	}
+	
+	
 	//save
 	public String saveFile(String path, MultipartFile multipartFile, ServletContext servletContext) throws Exception{
 		//경로가 다 다르므로 매개변수로 받는 방법
