@@ -22,7 +22,7 @@
 <c:import url="../template/header.jsp"></c:import>
 	<section class="container col-lg-6">
 		<div class="mt-5 mb-3"><h2 style="text-align:center;">${board} 수정👩‍🔧‍</h2></div>
-		<form action="./update.do" method="post">
+		<form action="./update.do" method="post" enctype="">
 			<div class="form-group">
 				<input type="hidden" name="num" value="${boardDTO.num}">
 			</div>
@@ -37,8 +37,25 @@
 			<div class="mt-3 mb-3" style="text-align:right;">
 			<input class="btn btn-dark mb-3 text-white" type="submit" value="수정하기">
 			</div>
+	
+	   <c:forEach items="${boardDTO.boardFileDTOs}" var="fileDTO">
+               <div class="mb-3">
+               	<span class="form-control">${fileDTO.oriName}</span>
+                  <button type="button" class="fileDelete" data-file-num="${fileDTO.fileNum}">삭제</button>
+               </div>
+    	</c:forEach>
+		<div id="addFiles">
+			<button class="btn btn-dark mb-3 text-white" type="button" id="fileAdd">파일추가</button>
+		</div>	
+
 		</form>
 	</section>
+	
+	
 <c:import url="../template/footer.jsp"></c:import>
+<script src="/resources/js/board.js"></script>
+<script>
+	setCount(${boardDTO.boardFileDTOs.size()});
+</script>
 </body>
 </html>

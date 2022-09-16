@@ -2,14 +2,71 @@ const addFiles = document.getElementById("addFiles");
 const fileAdd = document.getElementById("fileAdd");
 const div3 = document.getElementById("div3");
 
-let count = 0;
-let idx = 0;
-fileAdd.addEventListener("click", function () {
-  if (count > 4) {
-    alert("최대 5개만 가능");
-    return;
+//file update
+
+const fileDelete = document.querySelectorAll(".fileDelete");//배열로 forEach가능
+// const fileDelete = document.getElementsByClassName("fileDelete");//유사배열로 forEach불가능
+try {  
+  try{
+    fileDelete.forEach(function(f){
+    f.addEventListener("click", function(){
+      console.log(f.parentNode);
+
+      let check = window.confirm("삭제를 하면 되돌릴 수 없습니다.");
+
+      if(!check){
+        return
+      }
+
+
+      console.log("fileDelete");
+      console.log(f.getAttribute("data-file-num"));
+      let fileNum = f.getAttribute("data-file-num");
+
+      const xhttp = new XMLHttpRequest();
+
+      xhttp.open("POST", "./fileDelete");
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send("fileNum="+fileNum);
+
+      xhttp.onreadystatechange=function(){
+        if(xhttp.readyState==4&&xhttp.status==200){
+          let result = xhttp.responseText.trim();
+          if(result==1){
+            console.log(result)
+            f.parentNode.remove();
+            count--;
+          }else{
+            console.log(result)
+          }
+        }
+      }
+    })
+  });
+}catch(e){
+  
+}
+
+// for(fi of fileDelete){
+  //   console.log(fi)
+  // }
+  
+  //add file
+  let count = 0;
+  let idx = 0;
+
+  function setCount(c){
+    if(c >= 0){
+      count = c;
+    }
   }
-  //부모 Element div생성
+
+  fileAdd.addEventListener("click", function () {
+    if (count > 4) {
+      alert("최대 5개만 가능");
+      return;
+    }
+    //부모 Element div생성
   let div = document.createElement("div");
   let c = document.createAttribute("class");
   c.value = "form-group pt-3";
@@ -17,7 +74,7 @@ fileAdd.addEventListener("click", function () {
   c = document.createAttribute("id");
   c.value = "file" + idx;
   div.setAttributeNode(c);
-
+  
   //자식 Element Label생성
   let label = document.createElement("label");
   let labelText = document.createTextNode("file");
@@ -28,10 +85,10 @@ fileAdd.addEventListener("click", function () {
   labelClass = document.createAttribute("for");
   labelClass.value = "files";
   label.setAttributeNode(labelClass);
-
+  
   //div에 label을 넣어줌
   div.appendChild(label);
-
+  
   //input태그만들기
   let input = document.createElement("input");
   let type = document.createAttribute("type");
@@ -46,10 +103,10 @@ fileAdd.addEventListener("click", function () {
   let id = document.createAttribute("id");
   id.value = "files";
   input.setAttributeNode(id);
-
+  
   //div안에 input태그 넣기
   div.appendChild(input);
-
+  
   //delete버튼
   let del = document.createElement("button");
   let type2 = document.createAttribute("type");
@@ -67,7 +124,7 @@ fileAdd.addEventListener("click", function () {
   buttonAttr = document.createAttribute("title");
   buttonAttr.value = idx;
   del.setAttributeNode(buttonAttr);
-
+  
   //addFiles에 div를 append함
   addFiles.append(div);
   count = count + 1;
@@ -75,17 +132,21 @@ fileAdd.addEventListener("click", function () {
 });
 
 // addFiles.addEventListener("click", function (event) {
-//   if (event.target.className == "del") {
-//     count--;
-//     const div4 = document.getElementById("file" + event.target.title);
-//     div4.remove();
-//   }
-// });
-
-addFiles.addEventListener("click", function (event) {
-  let button = event.target;
-  if (button.className == "del") {
+  //   if (event.target.className == "del") {
+    //     count--;
+    //     const div4 = document.getElementById("file" + event.target.title);
+    //     div4.remove();
+    //   }
+    // });
+    
+    addFiles.addEventListener("click", function (event) {
+      let button = event.target;
+      if (button.className == "del") {
     count--;
     document.getElementById("file" + button.title).remove();
   }
 });
+} catch (error) {
+  
+}
+

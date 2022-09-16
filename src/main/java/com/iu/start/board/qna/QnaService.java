@@ -28,6 +28,14 @@ public class QnaService implements BoardService{
 	@Autowired
 	private FileManager fileManager;
 	
+	
+	
+	@Override
+	public int setFileDelete(BoardFileDTO boarFileDTO, ServletContext servletContext) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaDAO.setFileDelete(boarFileDTO);
+	}
+
 	public int setReply(QnaDTO qnaDTO) throws Exception{
 		BoardDTO boardDTO = qnaDAO.getDetail(qnaDTO);
 		QnaDTO parent = (QnaDTO)boardDTO;
@@ -86,7 +94,7 @@ public class QnaService implements BoardService{
 	}
 
 	@Override
-	public int setUpdate(BoardDTO boardDTO) throws Exception {
+	public int setUpdate(BoardDTO boardDTO, MultipartFile[] files, ServletContext servletContext) throws Exception {
 		return qnaDAO.setUpdate(boardDTO);
 	}
 

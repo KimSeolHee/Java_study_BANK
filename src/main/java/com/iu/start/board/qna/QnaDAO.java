@@ -64,4 +64,14 @@ public class QnaDAO implements BoardDAO{
 		return sqlSession.insert(NAMESPACE+"setAddFile", boardFileDTO);
 	}
 	
+	public int setFileDelete(BoardFileDTO boardFileDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setFileDelete", boardFileDTO);
+	}
+
+	@Override
+	public BoardFileDTO getFileDetail(BoardFileDTO boardFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE+"getFileDetail", boardFileDTO);
+	}
+	
 }
